@@ -534,85 +534,82 @@
     });
 
     // LEAD FORM: send data to WhatsApp
-    (function() {
-      const form = document.getElementById('leadForm');
-      const successMsg = document.getElementById('formSuccessMessage');
-      const submitBtn = document.getElementById('leadSubmitBtn');
+(function() {
+  const form = document.getElementById('leadForm');
+  const successMsg = document.getElementById('formSuccessMessage');
+  const submitBtn = document.getElementById('leadSubmitBtn');
 
-      if (!form) return;
+  if (!form) return;
 
-      // WhatsApp number (with country code, no + sign)
-      const WHATSAPP_NUMBER = '919910926757'; // Change to your number
+  // WhatsApp number (with country code, no + sign)
+  const WHATSAPP_NUMBER = '919910926757'; // Change to your number
 
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
 
-        // Get form values
-        const name = document.getElementById('lead-name').value.trim();
-        const phone = document.getElementById('lead-phone').value.trim();
-        const email = document.getElementById('lead-email').value.trim();
-        const interest = document.getElementById('lead-interest').value;
-        const message = document.getElementById('lead-message').value.trim();
+    // Get form values
+    const name = document.getElementById('lead-name').value.trim();
+    const phone = document.getElementById('lead-phone').value.trim();
+    const email = document.getElementById('lead-email').value.trim();
+    const interest = document.getElementById('lead-interest').value;
+    const message = document.getElementById('lead-message').value.trim();
 
-        // Basic validation
-        if (!name || !phone || !email || !interest) {
-          alert('Please fill in all required fields.');
-          return;
-        }
+    // Basic validation
+    if (!name || !phone || !email || !interest) {
+      alert('Please fill in all required fields.');
+      return;
+    }
 
-        // Build WhatsApp message
-        const whatsappMsg = 
-          `*New Enquiry from Ekaani Website*%0A%0A` +
-          `*Name:* ${encodeURIComponent(name)}%0A` +
-          `*Phone:* ${encodeURIComponent(phone)}%0A` +
-          `*Email:* ${encodeURIComponent(email)}%0A` +
-          `*Interested In:* ${encodeURIComponent(interest)}%0A` +
-          `*Message:* ${encodeURIComponent(message || 'N/A')}`;
+    // Build WhatsApp message
+    const whatsappMsg = 
+      `*New Enquiry from Ekaani Website*%0A%0A` +
+      `*Name:* ${encodeURIComponent(name)}%0A` +
+      `*Phone:* ${encodeURIComponent(phone)}%0A` +
+      `*Email:* ${encodeURIComponent(email)}%0A` +
+      `*Interested In:* ${encodeURIComponent(interest)}%0A` +
+      `*Message:* ${encodeURIComponent(message || 'N/A')}`;
 
-        // WhatsApp URL
-        const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMsg}`;
+    // WhatsApp URL
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMsg}`;
 
-        // Disable button
-        submitBtn.disabled = true;
-        submitBtn.textContent = 'Sending...';
+    // Disable button
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
 
-        // Open WhatsApp in new tab/window
+    // Fire Google Ads Form Submit Conversion
+    gtag('event', 'conversion', {
+      'send_to': 'AW-706143010/SDYsCN3WuNgcEKLG29AC',
+      'value': 1.0,
+      'currency': 'INR',
+      'event_callback': function () {
         window.open(waUrl, '_blank');
-
-        // Show success message
-        successMsg.style.display = 'block';
-        form.reset();
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit Enquiry';
-
-        // Auto-hide after 8 seconds
-        setTimeout(() => {
-          successMsg.style.display = 'none';
-        }, 8000);
-
-        // Scroll to success message
-        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      });
-    })();
-  </script>
-  <script>
-document.addEventListener("DOMContentLoaded", function () {
-
-  document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]').forEach(function(btn) {
-
-    btn.addEventListener("click", function() {
-
-      gtag('event', 'conversion', {
-        'send_to': 'AW-706143010/kDIZCOXIp9gcEKLG29AC',
-        'value': 1.0,
-        'currency': 'INR'
-      });
-
+      }
     });
 
-  });
+    // Fallback if callback doesn't execute
+    setTimeout(function () {
+      window.open(waUrl, '_blank');
+    }, 800);
 
-});
+    // Show success message
+    successMsg.style.display = 'block';
+    form.reset();
+
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Submit Enquiry';
+
+    // Auto-hide after 8 seconds
+    setTimeout(() => {
+      successMsg.style.display = 'none';
+    }, 8000);
+
+    // Scroll to success message
+    successMsg.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });
+  });
+})();
 </script>
 </body>
 </html>
