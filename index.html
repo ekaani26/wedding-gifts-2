@@ -586,5 +586,24 @@
       });
     })();
   </script>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  document.querySelectorAll('a[href*="wa.me"], a[href*="api.whatsapp.com"]').forEach(function(btn) {
+
+    btn.addEventListener("click", function() {
+
+      gtag('event', 'conversion', {
+        'send_to': 'AW-706143010/kDIZCOXIp9gcEKLG29AC',
+        'value': 1.0,
+        'currency': 'INR'
+      });
+
+    });
+
+  });
+
+});
+</script>
 </body>
 </html>
