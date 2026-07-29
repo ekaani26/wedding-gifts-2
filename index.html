@@ -7,40 +7,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ekaani | Wedding Hampers & Return Gifts</title>
   <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
-  <!-- Ensure Font Awesome is loaded early and correctly -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  <!-- Other vendor styles -->
   <link rel="stylesheet" href="assets/vendors/magnific-popup/magnific-popup.min.css">
   <link rel="stylesheet" href="assets/vendors/swiper/swiper-bundle.min.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/responsive.css">
   <style>
-    /* Fix cropping */
+    /* fix cropping & partners */
     .products.tab-info .tab-section .product-item .image,
-    .products .product-item .image {
-      height: auto; aspect-ratio: 3/4; overflow: hidden;
-    }
+    .products .product-item .image { height: auto; aspect-ratio: 3/4; overflow: hidden; }
     .products.tab-info .tab-section .product-item .image img,
-    .products .product-item .image img {
-      width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;
-    }
+    .products .product-item .image img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
     .products .product-item .content { padding-bottom: 20px; }
-    /* Partner logos - colored */
-    .partners.home-partners .partner-item {
-      display: flex; align-items: center; justify-content: center;
-      height: 90px; padding: 10px 20px;
-    }
-    .partners.home-partners .partner-item img {
-      max-height: 60px; max-width: 100%; width: auto; height: auto;
-      object-fit: contain;
-      filter: grayscale(0%) !important;
-      opacity: 1 !important;
-      transition: all 0.3s ease;
-    }
-    .partners.home-partners .partner-item img:hover {
-      filter: grayscale(0%) !important; opacity: 1 !important;
-    }
-    /* Lead form */
+    .partners.home-partners .partner-item { display: flex; align-items: center; justify-content: center; height: 90px; padding: 10px 20px; }
+    .partners.home-partners .partner-item img { max-height: 60px; max-width: 100%; width: auto; height: auto; object-fit: contain; filter: grayscale(0%) !important; opacity: 1 !important; transition: all 0.3s ease; }
+    .partners.home-partners .partner-item img:hover { filter: grayscale(0%) !important; opacity: 1 !important; }
     .lead-capture-form { padding: 80px 20px; background: #faf7f2; display: flex; justify-content: center; }
     .lead-capture-form .lead-form-container { width: 100%; max-width: 850px; }
     .lead-capture-form .heading { text-align: center; margin-bottom: 40px; }
@@ -53,160 +34,56 @@
     .lead-form-field { flex: 1; display: flex; flex-direction: column; }
     .lead-form-field label { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 8px; }
     .lead-form-field label span { color: #c0392b; margin-left: 2px; }
-    .lead-form-field input, .lead-form-field select, .lead-form-field textarea {
-      padding: 12px 14px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px;
-      font-family: inherit; color: #1a1a1a; width: 100%; box-sizing: border-box; background: #fff;
-    }
-    .lead-form-field input:focus, .lead-form-field select:focus, .lead-form-field textarea:focus {
-      outline: none; border-color: #b8860b;
-    }
+    .lead-form-field input, .lead-form-field select, .lead-form-field textarea { padding: 12px 14px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; font-family: inherit; color: #1a1a1a; width: 100%; box-sizing: border-box; background: #fff; }
+    .lead-form-field input:focus, .lead-form-field select:focus, .lead-form-field textarea:focus { outline: none; border-color: #b8860b; }
     .lead-form-field textarea { resize: vertical; }
-    .lead-form button.btn { display: inline-block; margin-top: 8px; cursor: pointer; border: none; }
-    @media (max-width: 767px) {
-      .lead-form-row { flex-direction: column; gap: 16px; }
-      .lead-form { padding: 24px; }
-      .lead-capture-form .heading h2 { font-size: 26px; }
-    }
-    /* Remove ratings and discounts from products */
+    .lead-form button.btn { display: inline-block; margin-top: 8px; cursor: pointer; border: none; background: #b8860b; color: #fff; padding: 12px 30px; border-radius: 6px; font-weight: 600; transition: 0.3s; }
+    .lead-form button.btn:hover { background: #a06f0a; }
     .product-item .rating, .product-item .discount { display: none !important; }
-    /* Smooth scroll */
     html { scroll-behavior: smooth; }
-    /* Mobile get quote visible */
     .icon-container .btn { display: inline-block; }
-    @media (max-width: 768px) {
-      .icon-container .btn { font-size: 12px; padding: 6px 12px; }
-    }
-    /* Single page nav - hide old dropdowns */
+    @media (max-width: 768px) { .icon-container .btn { font-size: 12px; padding: 6px 12px; } }
     .navbar .dropdown-menu { display: none; }
     .navbar .nav-btn { cursor: pointer; }
     .mobile-navbar .nav-link .sub-nav-link { display: none; }
     .mobile-navbar .nav-link .main-nav-link i.fa-plus { display: none; }
-    /* Features icons color */
     .features.home-features .feature-item i { color: #b8860b; }
     .counting .box i { color: #b8860b; }
-    /* Social icons hover - ensure they are visible */
-    .social-contacts a, .footer .social a { 
-      color: #333; 
-      transition: color 0.3s; 
-      display: inline-block; /* ensure proper display */
-      font-size: 1.2rem; /* make them visible */
-      margin: 0 5px;
-    }
+    .social-contacts a, .footer .social a { color: #333; transition: color 0.3s; display: inline-block; font-size: 1.2rem; margin: 0 5px; }
     .social-contacts a:hover, .footer .social a:hover { color: #b8860b; }
-    /* Floating WhatsApp Button */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 60px;
-      height: 60px;
-      background: #25d366;
-      border-radius: 50%;
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-      transition: all 0.3s ease;
-      text-decoration: none;
-      animation: pulse 2s infinite;
-    }
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
-    }
-    .whatsapp-float i {
-      font-size: 32px;
-      color: #fff;
-    }
-    .whatsapp-float .tooltip {
-      position: absolute;
-      right: 70px;
-      background: #fff;
-      color: #333;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      white-space: nowrap;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.3s ease;
-    }
-    .whatsapp-float:hover .tooltip {
-      opacity: 1;
-    }
-    .whatsapp-float .tooltip::after {
-      content: '';
-      position: absolute;
-      right: -8px;
-      top: 50%;
-      transform: translateY(-50%);
-      border-left: 8px solid #fff;
-      border-top: 8px solid transparent;
-      border-bottom: 8px solid transparent;
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
-      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-    }
-    @media (max-width: 768px) {
-      .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        bottom: 20px;
-        right: 20px;
-      }
-      .whatsapp-float i { font-size: 26px; }
-      .whatsapp-float .tooltip { display: none; }
-    }
-    /* Ensure social icons in footer are visible */
-    .footer .social a {
-      font-size: 1.5rem;
-      margin: 0 8px;
-      color: #555;
-      transition: color 0.3s;
-    }
+    .whatsapp-float { position: fixed; bottom: 30px; right: 30px; z-index: 999; display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: #25d366; border-radius: 50%; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: all 0.3s ease; text-decoration: none; animation: pulse 2s infinite; }
+    .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6); }
+    .whatsapp-float i { font-size: 32px; color: #fff; }
+    .whatsapp-float .tooltip { position: absolute; right: 70px; background: #fff; color: #333; padding: 8px 16px; border-radius: 8px; font-size: 14px; font-weight: 500; white-space: nowrap; box-shadow: 0 2px 10px rgba(0,0,0,0.1); opacity: 0; pointer-events: none; transition: all 0.3s ease; }
+    .whatsapp-float:hover .tooltip { opacity: 1; }
+    .whatsapp-float .tooltip::after { content: ''; position: absolute; right: -8px; top: 50%; transform: translateY(-50%); border-left: 8px solid #fff; border-top: 8px solid transparent; border-bottom: 8px solid transparent; }
+    @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); } 70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); } 100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); } }
+    @media (max-width: 768px) { .whatsapp-float { width: 50px; height: 50px; bottom: 20px; right: 20px; } .whatsapp-float i { font-size: 26px; } .whatsapp-float .tooltip { display: none; } }
+    .footer .social a { font-size: 1.5rem; margin: 0 8px; color: #555; transition: color 0.3s; }
     .footer .social a:hover { color: #b8860b; }
-    /* Ensure the whatsapp icon is visible */
-    .whatsapp-float .fab.fa-whatsapp {
-      font-size: 32px;
-      color: white;
-    }
-    @media (max-width: 768px) {
-      .whatsapp-float .fab.fa-whatsapp {
-        font-size: 26px;
-      }
-    }
-    /* fix for font-awesome 6: use fa-brands for whatsapp */
-    .whatsapp-float i.fa-whatsapp {
-      font-family: "Font Awesome 6 Brands";
-      font-weight: 400;
-    }
+    .whatsapp-float .fab.fa-whatsapp { font-size: 32px; color: white; }
+    @media (max-width: 768px) { .whatsapp-float .fab.fa-whatsapp { font-size: 26px; } }
+    .whatsapp-float i.fa-whatsapp { font-family: "Font Awesome 6 Brands"; font-weight: 400; }
     .footer .social a i.fa-facebook-f,
     .footer .social a i.fa-instagram,
     .footer .social a i.fa-x-twitter,
-    .footer .social a i.fa-linkedin-in {
-      font-family: "Font Awesome 6 Brands";
-      font-weight: 400;
-    }
-    /* Ensure all icons are displayed */
+    .footer .social a i.fa-linkedin-in { font-family: "Font Awesome 6 Brands"; font-weight: 400; }
     .icon-container .icon { font-size: 1.5rem; margin-left: 15px; cursor: pointer; }
     .header-1 .header-contacts li i { margin-right: 8px; }
+
+    /* Success message */
+    .form-success-message { background: #d4edda; color: #155724; padding: 16px 20px; border-radius: 8px; border-left: 6px solid #28a745; margin-bottom: 20px; font-weight: 500; display: none; }
+    .form-success-message i { margin-right: 10px; color: #28a745; }
+    .lead-form .btn:disabled { opacity: 0.6; cursor: not-allowed; }
   </style>
 </head>
 <body>
 
   <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
   <a href="https://wa.me/919910926757?text=Hi%20Ekaani%2C%20I%27m%20interested%20in%20your%20wedding%20hampers%20and%20return%20gifts.%20Can%20you%20please%20share%20more%20details%3F" 
-     class="whatsapp-float" 
-     target="_blank"
-     rel="noopener noreferrer"
-     onclick="gtag('event', 'conversion', {'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL'});">
+     class="whatsapp-float" target="_blank" rel="noopener noreferrer">
     <span class="tooltip">Chat with us on WhatsApp</span>
-    <i class="fa-brands fa-whatsapp"></i> <!-- Fixed: using fa-brands -->
+    <i class="fa-brands fa-whatsapp"></i>
   </a>
 
   <!-- ===== HEADER ===== -->
@@ -285,26 +162,10 @@
   <!-- ===== FEATURES ===== -->
   <section class="features home-features" id="features">
     <div class="box-container">
-      <div class="feature-item">
-        <i class="fa-solid fa-gift"></i>
-        <h3>Handcrafted Hampers</h3>
-        <p>Every hamper is thoughtfully curated and handcrafted by skilled artisans.</p>
-      </div>
-      <div class="feature-item">
-        <i class="fa-solid fa-award"></i>
-        <h3>Premium Silverware</h3>
-        <p>Sterling silver and premium gifting items sourced with certified quality.</p>
-      </div>
-      <div class="feature-item">
-        <i class="fa-solid fa-truck-fast"></i>
-        <h3>Pan-India Delivery</h3>
-        <p>Reliable, on-time delivery for weddings big or small, anywhere in India.</p>
-      </div>
-      <div class="feature-item">
-        <i class="fa-solid fa-boxes-stacked"></i>
-        <h3>Bulk & Custom Orders</h3>
-        <p>Easy bulk ordering with custom branding for weddings and corporate events.</p>
-      </div>
+      <div class="feature-item"><i class="fa-solid fa-gift"></i><h3>Handcrafted Hampers</h3><p>Every hamper is thoughtfully curated and handcrafted by skilled artisans.</p></div>
+      <div class="feature-item"><i class="fa-solid fa-award"></i><h3>Premium Silverware</h3><p>Sterling silver and premium gifting items sourced with certified quality.</p></div>
+      <div class="feature-item"><i class="fa-solid fa-truck-fast"></i><h3>Pan-India Delivery</h3><p>Reliable, on-time delivery for weddings big or small, anywhere in India.</p></div>
+      <div class="feature-item"><i class="fa-solid fa-boxes-stacked"></i><h3>Bulk & Custom Orders</h3><p>Easy bulk ordering with custom branding for weddings and corporate events.</p></div>
     </div>
   </section>
 
@@ -548,19 +409,46 @@
     </div>
   </section>
 
-  <!-- ===== LEAD FORM ===== -->
+  <!-- ===== LEAD FORM (with success message) ===== -->
   <section class="lead-capture-form" id="lead-form-section">
     <div class="lead-form-container">
       <div class="heading"><span>get in touch</span><h2>Get a Free Consultation & Quote</h2><p>Share your requirements and our gifting experts will get back to you within 24 hours.</p></div>
-      <form class="lead-form" action="https://formsubmit.co/info@ekaani.com" method="POST">
+      
+      <!-- Success message (hidden by default) -->
+      <div id="formSuccessMessage" class="form-success-message">
+        <i class="fa-solid fa-circle-check"></i> Thank you! Your enquiry has been sent successfully. We'll get back to you soon.
+      </div>
+
+      <form class="lead-form" id="leadForm" action="https://formsubmit.co/testmailekaani@gmail.com" method="POST">
         <input type="hidden" name="_subject" value="New Lead - Ekaani Wedding Hampers">
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_template" value="table">
         <input type="text" name="_honey" style="display:none">
-        <div class="lead-form-row"><div class="lead-form-field"><label for="lead-name">Full Name<span>*</span></label><input type="text" id="lead-name" name="Full Name" placeholder="Your full name" required></div><div class="lead-form-field"><label for="lead-phone">Phone Number<span>*</span></label><input type="tel" id="lead-phone" name="Phone Number" placeholder="+91 xxxxx xxxxx" required></div></div>
-        <div class="lead-form-row"><div class="lead-form-field"><label for="lead-email">Email Address<span>*</span></label><input type="email" id="lead-email" name="Email Address" placeholder="you@example.com" required></div><div class="lead-form-field"><label for="lead-interest">I'm Interested In<span>*</span></label><select id="lead-interest" name="Interested In" required><option value="" disabled selected>Select an option</option><option value="Wedding Hampers">Wedding Hampers</option><option value="Return Gifts">Return Gifts</option><option value="Corporate & Bulk Gifting">Corporate & Bulk Gifting</option><option value="Silverware Gifting">Silverware Gifting</option><option value="Franchise Enquiry">Franchise Enquiry</option><option value="Other">Other</option></select></div></div>
-        <div class="lead-form-row single"><div class="lead-form-field"><label for="lead-message">Your Requirement</label><textarea id="lead-message" name="Message" rows="4" placeholder="Tell us about your event, quantity, and timeline..."></textarea></div></div>
-        <button type="submit" class="btn">Submit Enquiry</button>
+        <!-- Redirect to same page with success param (optional) but we handle with JS -->
+        <input type="hidden" name="_next" value="#lead-form-section">
+        
+        <div class="lead-form-row">
+          <div class="lead-form-field"><label for="lead-name">Full Name<span>*</span></label><input type="text" id="lead-name" name="Full Name" placeholder="Your full name" required></div>
+          <div class="lead-form-field"><label for="lead-phone">Phone Number<span>*</span></label><input type="tel" id="lead-phone" name="Phone Number" placeholder="+91 xxxxx xxxxx" required></div>
+        </div>
+        <div class="lead-form-row">
+          <div class="lead-form-field"><label for="lead-email">Email Address<span>*</span></label><input type="email" id="lead-email" name="Email Address" placeholder="you@example.com" required></div>
+          <div class="lead-form-field"><label for="lead-interest">I'm Interested In<span>*</span></label>
+            <select id="lead-interest" name="Interested In" required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="Wedding Hampers">Wedding Hampers</option>
+              <option value="Return Gifts">Return Gifts</option>
+              <option value="Corporate & Bulk Gifting">Corporate & Bulk Gifting</option>
+              <option value="Silverware Gifting">Silverware Gifting</option>
+              <option value="Franchise Enquiry">Franchise Enquiry</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="lead-form-row single">
+          <div class="lead-form-field"><label for="lead-message">Your Requirement</label><textarea id="lead-message" name="Message" rows="4" placeholder="Tell us about your event, quantity, and timeline..."></textarea></div>
+        </div>
+        <button type="submit" class="btn" id="leadSubmitBtn">Submit Enquiry</button>
       </form>
     </div>
   </section>
@@ -629,7 +517,7 @@
   <script src="assets/js/tab-info.js"></script>
   <script src="assets/js/portfolio.js"></script>
   <script>
-    // Convert all internal page links to smooth scroll / single page
+    // Smooth scroll for all internal links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function(e) {
         const href = this.getAttribute('href');
@@ -639,10 +527,59 @@
         if(target) target.scrollIntoView({ behavior: 'smooth' });
       });
     });
-    // Prevent redirects for any stray page links
     document.querySelectorAll('a[href*="pages/"]').forEach(link => {
       link.setAttribute('href', '#');
     });
+
+    // LEAD FORM HANDLING: show success message & send to email via formsubmit
+    (function() {
+      const form = document.getElementById('leadForm');
+      const successMsg = document.getElementById('formSuccessMessage');
+      const submitBtn = document.getElementById('leadSubmitBtn');
+
+      if (!form) return;
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Disable button to avoid double submit
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Submitting...';
+
+        const formData = new FormData(form);
+
+        // Send via fetch to formsubmit.co
+        fetch('https://formsubmit.co/testmailekaani@gmail.com', {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => {
+          if (response.ok) {
+            // Success
+            successMsg.style.display = 'block';
+            form.reset();
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Enquiry';
+            // Auto-hide after 8 seconds
+            setTimeout(() => {
+              successMsg.style.display = 'none';
+            }, 8000);
+            // Scroll to success message
+            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            alert('There was an issue submitting the form. Please try again.');
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Enquiry';
+          }
+        })
+        .catch(err => {
+          alert('Network error. Please check your connection and try again.');
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Submit Enquiry';
+          console.error(err);
+        });
+      });
+    })();
   </script>
 </body>
 </html>
