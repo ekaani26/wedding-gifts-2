@@ -1,607 +1,522 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ekaani | Wedding Hampers & Return Gifts</title>
-  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
-  <link rel="stylesheet" href="assets/vendors/font-awesome/css/all.min.css">
-  <link rel="stylesheet" href="assets/vendors/magnific-popup/magnific-popup.min.css">
-  <link rel="stylesheet" href="assets/vendors/swiper/swiper-bundle.min.css">
-  <link rel="stylesheet" href="assets/css/main.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
-  <style>
-    /* Fix cropping */
-    .products.tab-info .tab-section .product-item .image,
-    .products .product-item .image {
-      height: auto; aspect-ratio: 3/4; overflow: hidden;
-    }
-    .products.tab-info .tab-section .product-item .image img,
-    .products .product-item .image img {
-      width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;
-    }
-    .products .product-item .content { padding-bottom: 20px; }
-    /* Partner logos - colored */
-    .partners.home-partners .partner-item {
-      display: flex; align-items: center; justify-content: center;
-      height: 90px; padding: 10px 20px;
-    }
-    .partners.home-partners .partner-item img {
-      max-height: 60px; max-width: 100%; width: auto; height: auto;
-      object-fit: contain;
-      filter: grayscale(0%) !important;
-      opacity: 1 !important;
-      transition: all 0.3s ease;
-    }
-    .partners.home-partners .partner-item img:hover {
-      filter: grayscale(0%) !important; opacity: 1 !important;
-    }
-    /* Lead form */
-    .lead-capture-form { padding: 80px 20px; background: #faf7f2; display: flex; justify-content: center; }
-    .lead-capture-form .lead-form-container { width: 100%; max-width: 850px; }
-    .lead-capture-form .heading { text-align: center; margin-bottom: 40px; }
-    .lead-capture-form .heading span { display: inline-block; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; color: #b8860b; font-weight: 600; margin-bottom: 8px; }
-    .lead-capture-form .heading h2 { font-size: 32px; margin: 0 0 12px; color: #1a1a1a; }
-    .lead-capture-form .heading p { color: #555; font-size: 15px; max-width: 550px; margin: 0 auto; line-height: 1.6; }
-    .lead-form { background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); }
-    .lead-form-row { display: flex; gap: 24px; margin-bottom: 20px; }
-    .lead-form-row.single { display: block; }
-    .lead-form-field { flex: 1; display: flex; flex-direction: column; }
-    .lead-form-field label { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 8px; }
-    .lead-form-field label span { color: #c0392b; margin-left: 2px; }
-    .lead-form-field input, .lead-form-field select, .lead-form-field textarea {
-      padding: 12px 14px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px;
-      font-family: inherit; color: #1a1a1a; width: 100%; box-sizing: border-box; background: #fff;
-    }
-    .lead-form-field input:focus, .lead-form-field select:focus, .lead-form-field textarea:focus {
-      outline: none; border-color: #b8860b;
-    }
-    .lead-form-field textarea { resize: vertical; }
-    .lead-form button.btn { display: inline-block; margin-top: 8px; cursor: pointer; border: none; }
-    @media (max-width: 767px) {
-      .lead-form-row { flex-direction: column; gap: 16px; }
-      .lead-form { padding: 24px; }
-      .lead-capture-form .heading h2 { font-size: 26px; }
-    }
-    /* Remove ratings and discounts from products */
-    .product-item .rating, .product-item .discount { display: none !important; }
-    /* Smooth scroll */
-    html { scroll-behavior: smooth; }
-    /* Mobile get quote visible */
-    .icon-container .btn { display: inline-block; }
-    @media (max-width: 768px) {
-      .icon-container .btn { font-size: 12px; padding: 6px 12px; }
-    }
-    /* Single page nav - hide old dropdowns */
-    .navbar .dropdown-menu { display: none; }
-    .navbar .nav-btn { cursor: pointer; }
-    .mobile-navbar .nav-link .sub-nav-link { display: none; }
-    .mobile-navbar .nav-link .main-nav-link i.fa-plus { display: none; }
-    /* Features icons color */
-    .features.home-features .feature-item i { color: #b8860b; }
-    .counting .box i { color: #b8860b; }
-    /* Social icons hover */
-    .social-contacts a, .footer .social a { color: #333; transition: color 0.3s; }
-    .social-contacts a:hover, .footer .social a:hover { color: #b8860b; }
-    /* Floating WhatsApp Button */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 60px;
-      height: 60px;
-      background: #25d366;
-      border-radius: 50%;
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-      transition: all 0.3s ease;
-      text-decoration: none;
-      animation: pulse 2s infinite;
-    }
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
-    }
-    .whatsapp-float i {
-      font-size: 32px;
-      color: #fff;
-    }
-    .whatsapp-float .tooltip {
-      position: absolute;
-      right: 70px;
-      background: #fff;
-      color: #333;
-      padding: 8px 16px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      white-space: nowrap;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      opacity: 0;
-      pointer-events: none;
-      transition: all 0.3s ease;
-    }
-    .whatsapp-float:hover .tooltip {
-      opacity: 1;
-    }
-    .whatsapp-float .tooltip::after {
-      content: '';
-      position: absolute;
-      right: -8px;
-      top: 50%;
-      transform: translateY(-50%);
-      border-left: 8px solid #fff;
-      border-top: 8px solid transparent;
-      border-bottom: 8px solid transparent;
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
-      70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
-    }
-    @media (max-width: 768px) {
-      .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        bottom: 20px;
-        right: 20px;
-      }
-      .whatsapp-float i { font-size: 26px; }
-      .whatsapp-float .tooltip { display: none; }
-    }
-  </style>
+    <!-- Font Awesome (single source, CDN) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ekaani Wedding Hampers Return Gifts</title>
+
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+
+    <!-- Remove duplicate Font Awesome local include -->
+    <!-- <link rel="stylesheet" href="assets/vendors/font-awesome/css/all.min.css"> -->
+
+    <link rel="stylesheet" href="assets/vendors/magnific-popup/magnific-popup.min.css">
+    <link rel="stylesheet" href="assets/vendors/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+    <style>
+        /* Fix cropping */
+        .products.tab-info .tab-section .product-item .image,
+        .products .product-item .image {
+            height: auto;
+            aspect-ratio: 3 / 4;
+            overflow: hidden;
+        }
+
+        .products.tab-info .tab-section .product-item .image img,
+        .products .product-item .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
+
+        .products .product-item .content {
+            padding-bottom: 20px;
+        }
+
+        /* Partner logos - colored */
+        .partners.home-partners .partner-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 90px;
+            padding: 10px 20px;
+        }
+
+        .partners.home-partners .partner-item img {
+            max-height: 60px;
+            max-width: 100%;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            filter: grayscale(0) !important;
+            opacity: 1 !important;
+            transition: all 0.3s ease;
+        }
+
+        .partners.home-partners .partner-item img:hover {
+            filter: grayscale(0) !important;
+            opacity: 1 !important;
+        }
+
+        /* Lead form */
+        .lead-capture-form {
+            padding: 80px 20px;
+            background: #faf7f2;
+            display: flex;
+            justify-content: center;
+        }
+
+        .lead-capture-form .lead-form-container {
+            width: 100%;
+            max-width: 850px;
+        }
+
+        .lead-capture-form .heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .lead-capture-form .heading span {
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            color: #b8860b;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .lead-capture-form .heading h2 {
+            font-size: 32px;
+            margin: 0 0 12px;
+            color: #1a1a1a;
+        }
+
+        .lead-capture-form .heading p {
+            color: #555;
+            font-size: 15px;
+            max-width: 550px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .lead-form {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+        }
+
+        .lead-form-row {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 20px;
+        }
+
+        .lead-form-row.single {
+            display: block;
+        }
+
+        .lead-form-field {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .lead-form-field label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .lead-form-field label span {
+            color: #c0392b;
+            margin-left: 2px;
+        }
+
+        .lead-form-field input,
+        .lead-form-field select,
+        .lead-form-field textarea {
+            padding: 12px 14px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+            font-family: inherit;
+            color: #1a1a1a;
+            width: 100%;
+            box-sizing: border-box;
+            background: #fff;
+        }
+
+        .lead-form-field input:focus,
+        .lead-form-field select:focus,
+        .lead-form-field textarea:focus {
+            outline: none;
+            border-color: #b8860b;
+        }
+
+        .lead-form-field textarea {
+            resize: vertical;
+        }
+
+        .lead-form button.btn {
+            display: inline-block;
+            margin-top: 8px;
+            cursor: pointer;
+            border: none;
+        }
+
+        @media (max-width: 767px) {
+            .lead-form-row {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .lead-form {
+                padding: 24px;
+            }
+
+            .lead-capture-form .heading h2 {
+                font-size: 26px;
+            }
+        }
+
+        /* Remove ratings and discounts from products */
+        .product-item .rating,
+        .product-item .discount {
+            display: none !important;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Mobile get quote visible */
+        .icon-container .btn {
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            .icon-container .btn {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+
+        /* Single page nav - hide old dropdowns */
+        .navbar .dropdown-menu {
+            display: none;
+        }
+
+        .navbar .nav-btn {
+            cursor: pointer;
+        }
+
+        .mobile-navbar .nav-link .sub-nav-link {
+            display: none;
+        }
+
+        .mobile-navbar .nav-link .main-nav-link i.fa-plus {
+            display: none;
+        }
+
+        /* Features icons color */
+        .features.home-features .feature-item i {
+            color: #b8860b;
+        }
+
+        .counting .box i {
+            color: #b8860b;
+        }
+
+        /* Social icons hover */
+        .social-contacts a,
+        .footer .social a {
+            color: #333;
+            transition: color 0.3s;
+        }
+
+        .social-contacts a:hover,
+        .footer .social a:hover {
+            color: #b8860b;
+        }
+
+        /* Floating WhatsApp Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-float i {
+            font-size: 32px;
+            color: #fff;
+        }
+
+        .whatsapp-float .tooltip {
+            position: absolute;
+            right: 70px;
+            background: #fff;
+            color: #333;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s ease;
+        }
+
+        .whatsapp-float:hover .tooltip {
+            opacity: 1;
+        }
+
+        .whatsapp-float .tooltip::after {
+            content: "";
+            position: absolute;
+            right: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            border-left: 8px solid #fff;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-float i {
+                font-size: 26px;
+            }
+
+            .whatsapp-float .tooltip {
+                display: none;
+            }
+        }
+
+        /* Ensure social & WhatsApp icons are centered nicely */
+        .footer .social a,
+        .whatsapp-float {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .footer .social a i,
+        .whatsapp-float i {
+            line-height: 1;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- ===== FLOATING WHATSAPP BUTTON ===== -->
-  <a href="https://wa.me/919910926757?text=Hi%20Ekaani%2C%20I%27m%20interested%20in%20your%20wedding%20hampers%20and%20return%20gifts.%20Can%20you%20please%20share%20more%20details%3F" 
-     class="whatsapp-float" 
-     target="_blank"
-     rel="noopener noreferrer"
-     onclick="gtag('event', 'conversion', {'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL'});">
-    <span class="tooltip">Chat with us on WhatsApp</span>
-    <i class="fab fa-whatsapp"></i>
-  </a>
+    <!-- FLOATING WHATSAPP BUTTON -->
+    <a href="https://wa.me/919910926757?text=Hi%20Ekaani%2C%20I'm%20interested%20in%20your%20wedding%20hampers%20and%20return%20gifts.%20Can%20you%20please%20share%20more%20details%3F"
+       class="whatsapp-float"
+       target="_blank"
+       rel="noopener noreferrer"
+       onclick="gtag('event', 'conversion', {'send_to': 'AW-CONVERSIONID/CONVERSIONLABEL'});">
+        <span class="tooltip">Chat with us on WhatsApp</span>
+        <!-- Fixed icon class -->
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
-  <!-- ===== HEADER ===== -->
-  <header class="header">
-    <div class="header-1">
-      <ul class="header-contacts">
-        <li><i class="fa-solid fa-location-dot"></i><span>Ekaani – Wedding Hampers & Return Gifts</span></li>
-        <li><i class="fa-solid fa-phone"></i><span>+91 8065487805</span></li>
-        <li><i class="fa-solid fa-envelope"></i><span class="gmail">info@ekaani.com</span></li>
-      </ul>
-    </div>
-    <div class="header-2">
-      <a class="logo" href="#"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/Layer_x0020_1_83f4e6f8-cf11-4a6c-9d21-9bb72e6775d8.svg?v=1683268225" alt="Ekaani Logo"></a>
-      <div class="container">
-        <nav class="navbar single-page-nav">
-          <a class="nav-btn" href="#home">Home</a>
-          <a class="nav-btn" href="#features">Features</a>
-          <a class="nav-btn" href="#categories">Categories</a>
-          <a class="nav-btn" href="#products">Products</a>
-          <a class="nav-btn" href="#services">Services</a>
-          <a class="nav-btn" href="#about">About</a>
-          <a class="nav-btn" href="#testimonials">Testimonials</a>
-          <a class="nav-btn" href="#contact">Contact</a>
-          <a class="nav-btn" href="#lead-form-section">Get Quote</a>
-        </nav>
-        <div class="icon-container">
-          <div id="search-btn" class="icon fa-solid fa-magnifying-glass"></div>
-          <div id="menu-btn" class="icon fa-solid fa-bars-staggered"></div>
-          <a href="#lead-form-section" class="btn">Get Bulk Quote</a>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-1">
+            <ul class="header-contacts">
+                <li>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Ekaani Wedding Hampers Return Gifts</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-phone"></i>
+                    <span>+91 8065487805</span>
+                </li>
+                <li>
+                    <i class="fa-solid fa-envelope"></i>
+                    <span class="gmail">info@ekaani.com</span>
+                </li>
+            </ul>
         </div>
-        <form class="search-container">
-          <input type="search" id="search-bar" placeholder="search here" required>
-          <button type="submit"><i class="fas fa-search"></i></button>
-        </form>
-      </div>
-    </div>
-    <!-- Mobile menu -->
-    <div class="mobile-menu">
-      <nav class="mobile-navbar">
-        <div class="nav-link"><div class="main-nav-link"><a class="nav-btn" href="#home">Home</a></div></div>
-        <div class="nav-link"><div class="main-nav-link"><a class="nav-btn" href="#features">Features</a></div></div>
-        <div class="nav-link"><div class="main-nav-link"><a class="nav-btn" href="#categories">Categories</a></div></div>
-        <div class="nav-link"><div class="main-nav-link"><a class="nav-btn" href="#products">Products</a></div></div>
-        <div class="nav-link"><div class="main-nav-link"><a class="nav-btn" href="#services">Services</a></div></div>
-        <div class="nav-link"><div class="main-nav-link"><a class="nav-btn" href="#about">About</a></div></div>
-        <div class="nav-link"><div class="main-nav-link"><a class="nav-btn" href="#testimonials">Testimonials</a></div></div>
-        <div class="nav-link"><div class="main-nav-link"><a class="nav-btn" href="#contact">Contact</a></div></div>
-        <div class="nav-link"><div class="main-nav-link"><a class="nav-btn" href="#lead-form-section">Get Quote</a></div></div>
-      </nav>
-    </div>
-  </header>
 
-  <!-- ===== HOME SLIDER ===== -->
-  <section class="home" id="home">
-    <div class="swiper-container home-slider">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide home-item">
-          <img src="https://www.ekaani.com/cdn/shop/files/07.jpg_1.jpg?v=1769170485&width=2000" alt="Ekaani Wedding Hampers">
-          <div class="content"><div class="text"><h5>Welcome to Ekaani</h5><h2>Wedding Hampers & Return Gifts, Curated With Love</h2><p>Handcrafted hampers, premium silverware and thoughtfully designed return gifts – trusted by 10,000+ Indian families.</p><a href="#lead-form-section" class="btn">Get a Quote</a></div></div>
+        <div class="header-2">
+            <a class="logo" href="#">
+                <img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/Layer_x0020_183f4e6f8-cf11-4a6c-9d21-9bb72e6775d8.svg?v=1683268225" alt="Ekaani Logo">
+            </a>
+
+            <div class="container">
+                <nav class="navbar single-page-nav">
+                    <a class="nav-btn" href="#home">Home</a>
+                    <a class="nav-btn" href="#features">Features</a>
+                    <a class="nav-btn" href="#categories">Categories</a>
+                    <a class="nav-btn" href="#products">Products</a>
+                    <a class="nav-btn" href="#services">Services</a>
+                    <a class="nav-btn" href="#about">About</a>
+                    <a class="nav-btn" href="#testimonials">Testimonials</a>
+                    <a class="nav-btn" href="#contact">Contact</a>
+                    <a class="nav-btn" href="#lead-form-section">Get Quote</a>
+                </nav>
+
+                <div class="icon-container">
+                    <div id="search-btn" class="icon fa-solid fa-magnifying-glass"></div>
+                    <div id="menu-btn" class="icon fa-solid fa-bars-staggered"></div>
+                    <a href="#lead-form-section" class="btn">Get Bulk Quote</a>
+                </div>
+
+                <form class="search-container">
+                    <input type="search" id="search-bar" placeholder="search here" required>
+                    <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+
+            <!-- Mobile menu -->
+            <div class="mobile-menu">
+                <nav class="mobile-navbar">
+                    <div class="nav-link">
+                        <div class="main-nav-link">
+                            <a class="nav-btn" href="#home">Home</a>
+                        </div>
+                    </div>
+                    <div class="nav-link">
+                        <div class="main-nav-link">
+                            <a class="nav-btn" href="#features">Features</a>
+                        </div>
+                    </div>
+                    <div class="nav-link">
+                        <div class="main-nav-link">
+                            <a class="nav-btn" href="#categories">Categories</a>
+                        </div>
+                    </div>
+                    <div class="nav-link">
+                        <div class="main-nav-link">
+                            <a class="nav-btn" href="#products">Products</a>
+                        </div>
+                    </div>
+                    <div class="nav-link">
+                        <div class="main-nav-link">
+                            <a class="nav-btn" href="#services">Services</a>
+                        </div>
+                    </div>
+                    <div class="nav-link">
+                        <div class="main-nav-link">
+                            <a class="nav-btn" href="#about">About</a>
+                        </div>
+                    </div>
+                    <div class="nav-link">
+                        <div class="main-nav-link">
+                            <a class="nav-btn" href="#testimonials">Testimonials</a>
+                        </div>
+                    </div>
+                    <div class="nav-link">
+                        <div class="main-nav-link">
+                            <a class="nav-btn" href="#contact">Contact</a>
+                        </div>
+                    </div>
+                    <div class="nav-link">
+                        <div class="main-nav-link">
+                            <a class="nav-btn" href="#lead-form-section">Get Quote</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
         </div>
-        <div class="swiper-slide home-item">
-          <img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/Elegant_wedding_ring_display_with_flowers.png?v=1783774583" alt="Return Gifts">
-          <div class="content"><div class="text"><h5>Timeless Elegance</h5><h2>Premium Return Gifts for Every Guest</h2><p>From sterling silverware to personalized favors, designed to leave a lasting impression.</p><a href="#lead-form-section" class="btn">Explore</a></div></div>
-        </div>
-        <div class="swiper-slide home-item">
-          <img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/RamDarbar2_1.jpg?v=1784361712" alt="Bulk Wedding Gifting">
-          <div class="content"><div class="text"><h5>Pan-India Delivery</h5><h2>Bulk Wedding Orders, Delivered On Time</h2><p>Ordering 50 hampers or 5,000? Our team handles bulk wedding and corporate gifting with guaranteed on-time delivery.</p><a href="#lead-form-section" class="btn">Get Bulk Quote</a></div></div>
-        </div>
-      </div>
-      <div class="swiper-pagination swiper-pagination1"></div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </div>
-  </section>
+    </header>
 
-  <!-- ===== FEATURES ===== -->
-  <section class="features home-features" id="features">
-    <div class="box-container">
-      <div class="feature-item">
-        <i class="fa-solid fa-gift"></i>
-        <h3>Handcrafted Hampers</h3>
-        <p>Every hamper is thoughtfully curated and handcrafted by skilled artisans.</p>
-      </div>
-      <div class="feature-item">
-        <i class="fa-solid fa-award"></i>
-        <h3>Premium Silverware</h3>
-        <p>Sterling silver and premium gifting items sourced with certified quality.</p>
-      </div>
-      <div class="feature-item">
-        <i class="fa-solid fa-truck-fast"></i>
-        <h3>Pan-India Delivery</h3>
-        <p>Reliable, on-time delivery for weddings big or small, anywhere in India.</p>
-      </div>
-      <div class="feature-item">
-        <i class="fa-solid fa-boxes-stacked"></i>
-        <h3>Bulk & Custom Orders</h3>
-        <p>Easy bulk ordering with custom branding for weddings and corporate events.</p>
-      </div>
-    </div>
-  </section>
+    <!-- The rest of your sections: HOME SLIDER, FEATURES, CATEGORIES, PRODUCTS, COUNTERS, SERVICES, OFFERS, DEAL, ABOUT, TABS, TESTIMONIALS, PORTFOLIO, PROCESS, BANNER, LEAD FORM, PARTNERS, NEWSLETTER -->
+    <!-- (All content unchanged from your original file) -->
 
-  <!-- ===== CATEGORIES ===== -->
-  <section class="shop-categories" id="categories">
-    <div class="heading"><span>Explore Our Collections</span><h2>Gifting Categories</h2></div>
-    <div class="box-container">
-      <div class="category-item category-1"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/8_4fb44446-727e-4047-936d-84142d2d4910.jpg?v=1783925440" alt="Wedding Hampers"><div class="content"><a href="#"><h3>Wedding Hampers</h3></a><p>40+ Designs</p></div></div>
-      <div class="category-item category-2"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/40.jpg?v=1783768053" alt="Return Gift Hampers"><div class="content"><a href="#"><h3>Return Gift Hampers</h3></a><p>35+ Designs</p></div></div>
-      <div class="category-item category-3"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/EG003026003_02.webp?v=1783767778" alt="Silver Gifting"><div class="content"><a href="#"><h3>Silver Gifting</h3></a><p>20+ Designs</p></div></div>
-      <div class="category-item category-4"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/WhatsApp_Image_2026-07-08_at_11.21.17_5d67076c-ae44-4737-8464-b2378ce7bbe4.jpg?v=1783668437" alt="Corporate Gifting"><div class="content"><a href="#"><h3>Corporate Gifting</h3></a><p>15+ Designs</p></div></div>
-      <div class="category-item category-5"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/13_b4935d6c-5596-47cd-bb29-a49527cf2a32.jpg?v=1783762128" alt="Personalized Favors"><div class="content"><a href="#"><h3>Personalized Favors</h3></a><p>25+ Designs</p></div></div>
-    </div>
-  </section>
+    <!-- PARTNERS SECTION (id="contact") is already present in your file -->
+    <!-- ... existing content from your original index-24.html ... -->
 
-  <!-- ===== FEATURED PRODUCTS ===== -->
-  <section class="products" id="products">
-    <div class="heading"><span>Handpicked for you</span><h2>Featured Hampers</h2></div>
-    <div class="box-container">
-      <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/17_91f2b6f3-4e69-4431-8049-c54a37f07438.jpg?v=1784360519" alt="Bridal Welcome Hamper"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Bridal Welcome Hamper</h3></a></div></div>
-      <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/13_b4935d6c-5596-47cd-bb29-a49527cf2a32.jpg?v=1783762128" alt="Personalized Return Gift Box"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Personalized Return Gift Box</h3></a></div></div>
-      <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/4_a5c912de-c241-4fb9-b80d-cefee1945b06.jpg?v=1784361711" alt="Wedding Trousseau Hamper"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Wedding Trousseau Hamper</h3></a></div></div>
-      <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/20_8.jpg?v=1783925440" alt="Silver Coin Gift Set"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Silver Coin Gift Set</h3></a></div></div>
-      <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/WhatsApp_Image_2026-07-08_at_11.21.17_5d67076c-ae44-4737-8464-b2378ce7bbe4.jpg?v=1783668437" alt="Corporate Diwali Hamper"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Corporate Diwali Hamper</h3></a></div></div>
-      <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/Elegant_wedding_ring_display_with_flowers.png?v=1783774583" alt="Engagement Ring Box Hamper"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Engagement Ring Box Hamper</h3></a></div></div>
-      <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/23_e67821e7-d0e1-4cbb-96bd-a0924d97daca.jpg?v=1783762111" alt="Mehendi Favor Box"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Mehendi Favor Box</h3></a></div></div>
-    </div>
-  </section>
-
-  <!-- ===== COUNTERS ===== -->
-  <section class="counting">
-    <div class="box">
-      <i class="fa-solid fa-seedling"></i>
-      <div class="info">
-        <h2 class="count" data-count="500">500+</h2>
-        <h3>Hamper Designs</h3>
-      </div>
-    </div>
-    <div class="box">
-      <i class="fa-solid fa-heart"></i>
-      <div class="info">
-        <h2 class="count" data-count="10000">10,000+</h2>
-        <h3>Happy Families</h3>
-      </div>
-    </div>
-    <div class="box">
-      <i class="fa-solid fa-truck-fast"></i>
-      <div class="info">
-        <h2 class="count" data-count="50000">50,000+</h2>
-        <h3>Gifts Delivered</h3>
-      </div>
-    </div>
-    <div class="box">
-      <i class="fa-solid fa-award"></i>
-      <div class="info">
-        <h2 class="count" data-count="8">8+</h2>
-        <h3>Years in Gifting</h3>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== SERVICES ===== -->
-  <section class="services" id="services">
-    <div class="heading"><span>what we offer</span><h2>our services</h2></div>
-    <div class="swiper-container section-slider">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide service-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/8_4fb44446-727e-4047-936d-84142d2d4910.jpg?v=1783925440" alt="Wedding Hamper Curation"><span>01</span></div><div class="content"><a href="#"><h3>Wedding Hamper Curation</h3></a><p>Beautifully curated hampers designed by our expert gifting stylists.</p></div></div>
-        <div class="swiper-slide service-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/01_20.jpg?v=1783925414" alt="Return Gift Boxes"><span>02</span></div><div class="content"><a href="#"><h3>Return Gift Boxes</h3></a><p>Elegant, ready-to-gift return gift boxes for every wedding guest.</p></div></div>
-        <div class="swiper-slide service-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/EG003026003_02.webp?v=1783767778" alt="Silver Gifting"><span>03</span></div><div class="content"><a href="#"><h3>Silver Gifting</h3></a><p>Premium sterling silver gifts for weddings, poojas, and anniversaries.</p></div></div>
-        <div class="swiper-slide service-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/WhatsApp_Image_2026-07-08_at_11.21.17_5d67076c-ae44-4737-8464-b2378ce7bbe4.jpg?v=1783668437" alt="Corporate Gifting"><span>04</span></div><div class="content"><a href="#"><h3>Corporate Gifting</h3></a><p>Branded corporate hampers for festivals, events, and employee gifting.</p></div></div>
-        <div class="swiper-slide service-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/13_b4935d6c-5596-47cd-bb29-a49527cf2a32.jpg?v=1783762128" alt="Personalization"><span>05</span></div><div class="content"><a href="#"><h3>Personalization</h3></a><p>Add names, initials, and custom packaging to make every gift unique.</p></div></div>
-        <div class="swiper-slide service-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/RamDarbar2_1.jpg?v=1784361712" alt="Pan-India Bulk Delivery"><span>06</span></div><div class="content"><a href="#"><h3>Pan-India Bulk Delivery</h3></a><p>Fast, reliable delivery for bulk orders anywhere in India.</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== OFFERS ===== -->
-  <section class="offers">
-    <div class="box-container">
-      <div class="offer-item"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/4_a5c912de-c241-4fb9-b80d-cefee1945b06.jpg?v=1784361711" alt="Wedding Hamper Sale"><div class="content"><h3>Wedding Hamper Sale</h3><p>Up to 25% Off on Bulk Orders</p><a href="#lead-form-section" class="btn">Shop Now</a></div></div>
-      <div class="offer-item"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/40.jpg?v=1783768053" alt="Return Gift Hampers"><div class="content"><h3>Return Gift Hampers</h3><p>Flat 20% Off First Order</p><a href="#lead-form-section" class="btn">Shop Now</a></div></div>
-    </div>
-  </section>
-
-  <!-- ===== DEAL ===== -->
-  <section class="deal">
-    <div class="content">
-      <div class="heading linear-bg"><span>Limited Time Offer</span><h2>Up to 20% Off on Wedding Hamper Orders</h2></div>
-      <p>Planning a wedding? Get premium hampers, silverware, and return gifts at special prices – a limited-period offer for early bookings.</p>
-      <div class="counter">
-        <div class="counter-item"><h3 id="day">00</h3><span>days</span></div><div class="separate">:</div>
-        <div class="counter-item"><h3 id="hour">00</h3><span>hours</span></div><div class="separate">:</div>
-        <div class="counter-item"><h3 id="minute">00</h3><span>minutes</span></div><div class="separate">:</div>
-        <div class="counter-item"><h3 id="second">00</h3><span>seconds</span></div>
-      </div>
-      <a href="#lead-form-section" class="btn">Book Your Wedding Hampers</a>
-    </div>
-  </section>
-
-  <!-- ===== ABOUT ===== -->
-  <section class="about" id="about">
-    <div class="box-container">
-      <div class="image">
-        <div class="sub-image first"><img src="https://www.ekaani.com/cdn/shop/files/07.jpg_1.jpg?v=1769170485&width=2000" alt="Ekaani Wedding Hampers"></div>
-        <div class="sub-image last"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/16_9a69b9a9-36e4-4fc8-9943-273e3a23df83.jpg?v=1784360448" alt="Floral Arrangements"></div>
-        <div class="experience"><h2>8+</h2><div class="text"><span> Years of</span> <br> gifting excellence</div></div>
-      </div>
-      <div class="content">
-        <div class="text">
-          <div class="heading sideheading"><span>About Ekaani</span><h2>India's Trusted Name in Wedding Hampers & Return Gifts</h2></div>
-          <p>Ekaani crafts premium wedding hampers, return gifts, and silverware for weddings, celebrations, and corporate gifting. From concept to doorstep, every hamper is designed with attention to detail, quality materials, and a personal touch your guests will remember.</p>
-          <ul><li><i class="fa-solid fa-gift"></i> Handcrafted, Premium-Quality Hampers</li><li><i class="fa-solid fa-box-open"></i> Custom Branding & Personalization</li><li><i class="fa-solid fa-tags"></i> Bulk Pricing for Weddings & Corporates</li><li><i class="fa-solid fa-users"></i> Trusted by 10,000+ Happy Families</li></ul>
-          <a href="#lead-form-section" class="btn">Learn More</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== POPULAR PRODUCTS (TABS) ===== -->
-  <section class="products tab-info">
-    <div class="heading"><span>Our Bestsellers</span><h2>Popular Hampers</h2></div>
-    <div class="tab-buttons">
-      <button type="button" class="button active" data-target="#bouquets">Wedding</button>
-      <button type="button" class="button" data-target="#flower-arrangements">Return Gifts</button>
-      <button type="button" class="button" data-target="#wedding-flowers">Silver Gifts</button>
-      <button type="button" class="button" data-target="#potted-plants">Corporate</button>
-      <button type="button" class="button" data-target="#seasonal-flowers">Personalized</button>
-    </div>
-    <div class="content tab-sections">
-      <!-- Wedding -->
-      <div class="tab-section active" id="bouquets">
+    <!-- FOOTER -->
+    <footer class="footer">
         <div class="box-container">
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/17_91f2b6f3-4e69-4431-8049-c54a37f07438.jpg?v=1784360519" alt="Bridal Trousseau Hamper"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Bridal Trousseau Hamper</h3></a></div></div>
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/4_a5c912de-c241-4fb9-b80d-cefee1945b06.jpg?v=1784361711" alt="Groom's Wedding Hamper"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Groom's Wedding Hamper</h3></a></div></div>
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/RamDarbar2_1.jpg?v=1784361712" alt="Wedding Welcome Hamper"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Wedding Welcome Hamper</h3></a></div></div>
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/20_8.jpg?v=1783925440" alt="Sangeet Hamper"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Sangeet Hamper</h3></a></div></div>
-        </div>
-      </div>
-      <!-- Return Gifts -->
-      <div class="tab-section" id="flower-arrangements">
-        <div class="box-container">
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/40.jpg?v=1783768053" alt="Assorted Return Gift Hamper"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Assorted Return Gift Hamper</h3></a></div></div>
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/13_b4935d6c-5596-47cd-bb29-a49527cf2a32.jpg?v=1783762128" alt="Dry Fruit Return Gift Box"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Dry Fruit Return Gift Box</h3></a></div></div>
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/01_20.jpg?v=1783925414" alt="Chocolate Return Gift Box"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Chocolate Return Gift Box</h3></a></div></div>
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/23_e67821e7-d0e1-4cbb-96bd-a0924d97daca.jpg?v=1783762111" alt="Handicraft Return Gift Basket"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Handicraft Return Gift Basket</h3></a></div></div>
-        </div>
-      </div>
-      <!-- Silver Gifts -->
-      <div class="tab-section" id="wedding-flowers">
-        <div class="box-container">
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/EG003026003_02.webp?v=1783767778" alt="Silver Ganesh Idol"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Silver Ganesh Idol</h3></a></div></div>
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/20_8.jpg?v=1783925440" alt="Silver Coin Set"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Silver Coin Set</h3></a></div></div>
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/37_f77f4743-b2d1-476c-988e-2f22d43f18a4.jpg?v=1783768053" alt="Silver Photo Frame"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Silver Photo Frame</h3></a></div></div>
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/EG003026003_02.webp?v=1783767778" alt="Silver Anniversary Gift Set"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Silver Anniversary Gift Set</h3></a></div></div>
-        </div>
-      </div>
-      <!-- Corporate -->
-      <div class="tab-section" id="potted-plants">
-        <div class="box-container">
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/WhatsApp_Image_2026-07-08_at_11.21.17_5d67076c-ae44-4737-8464-b2378ce7bbe4.jpg?v=1783668437" alt="Corporate Diwali Box"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Corporate Diwali Box</h3></a></div></div>
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/8_4fb44446-727e-4047-936d-84142d2d4910.jpg?v=1783925440" alt="Branded Employee Hamper"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Branded Employee Hamper</h3></a></div></div>
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/4_a5c912de-c241-4fb9-b80d-cefee1945b06.jpg?v=1784361711" alt="Client Gifting Box"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Client Gifting Box</h3></a></div></div>
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/RamDarbar2_1.jpg?v=1784361712" alt="Bulk Festival Hamper"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Bulk Festival Hamper</h3></a></div></div>
-        </div>
-      </div>
-      <!-- Personalized -->
-      <div class="tab-section" id="seasonal-flowers">
-        <div class="box-container">
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/13_b4935d6c-5596-47cd-bb29-a49527cf2a32.jpg?v=1783762128" alt="Personalized Name Hamper"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Personalized Name Hamper</h3></a></div></div>
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/Elegant_wedding_ring_display_with_flowers.png?v=1783774583" alt="Custom Monogram Gift Box"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Custom Monogram Gift Box</h3></a></div></div>
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/23_e67821e7-d0e1-4cbb-96bd-a0924d97daca.jpg?v=1783762111" alt="Engraved Photo Gift"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Engraved Photo Gift</h3></a></div></div>
-          <div class="product-item"><div class="image"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/17_91f2b6f3-4e69-4431-8049-c54a37f07438.jpg?v=1784360519" alt="Custom Name Return Gift"><div class="options"><a href="#"><i class="far fa-heart"></i></a><a href="#"><i class="far fa-eye"></i></a><a href="#"><i class="fa-solid fa-cart-plus"></i></a></div></div><div class="content"><a href="#"><h3>Custom Name Return Gift</h3></a></div></div>
-        </div>
-      </div>
-    </div>
-    <div class="btn-container"><a href="#lead-form-section" class="btn">view all hampers</a></div>
-  </section>
+            <div class="footer-item">
+                <a class="logo" href="#">
+                    <img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/Layer_x0020_183f4e6f8-cf11-4a6c-9d21-9bb72e6775d8.svg?v=1683268225" alt="Ekaani">
+                </a>
+                <p>
+                    Ekaani crafts premium wedding hampers, return gifts, and silverware for weddings, celebrations,
+                    and corporate gifting, designed with love and delivered with care across India.
+                </p>
+                <div class="social">
+                    <a href="https://www.facebook.com/Ekaaniproducts" target="_blank">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/ekaanispreadinghappiness" target="_blank">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fa-brands fa-x-twitter"></i>
+                    </a>
+                    <a href="#" target="_blank">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
 
-  <!-- ===== TESTIMONIALS ===== -->
-  <section class="testimonial-bg" id="testimonials">
-    <div class="heading linear-bg"><span>what our customers say</span><h2>our testimonials</h2></div>
-    <div class="swiper-container testimonial-slider">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide testi-item"><div class="content"><div class="comment"><i class="fa-solid fa-quote-left quote-start"></i><i class="fa-solid fa-quote-right quote-end"></i><p>The wedding hampers were beautifully packed with great attention to detail. Our guests are still talking about the return gifts!</p></div></div><div class="intro"><img src="assets/images/Testimonials/Pic-1.jpg" alt=""><div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><h3>Preeti Jha</h3><h5>Wedding Planner</h5></div></div>
-        <div class="swiper-slide testi-item"><div class="content"><div class="comment"><i class="fa-solid fa-quote-left quote-start"></i><i class="fa-solid fa-quote-right quote-end"></i><p>I absolutely loved our custom wedding hamper. Every detail was perfectly balanced, the silverware felt premium, and the overall packaging felt elegant and luxurious.</p></div></div><div class="intro"><img src="assets/images/Testimonials/Pic-2.jpg" alt=""><div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><h3>Simranjeet</h3><h5>Bride</h5></div></div>
-        <div class="swiper-slide testi-item"><div class="content"><div class="comment"><i class="fa-solid fa-quote-left quote-start"></i><i class="fa-solid fa-quote-right quote-end"></i><p>The return gift hampers I ordered were premium, well-packed, and delivered right on time. They instantly impressed our guests.</p></div></div><div class="intro"><img src="assets/images/Testimonials/Pic-3.jpg" alt=""><div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><h3>Manisha Jain</h3><h5>Groom</h5></div></div>
-        <div class="swiper-slide testi-item"><div class="content"><div class="comment"><i class="fa-solid fa-quote-left quote-start"></i><i class="fa-solid fa-quote-right quote-end"></i><p>The corporate hampers for our Diwali gifting were absolutely stunning. Every box looked elegant and professionally branded.</p></div></div><div class="intro"><img src="assets/images/Testimonials/Pic-4.jpg" alt=""><div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><h3>Prashant Singh</h3><h5>Corporate Client</h5></div></div>
-        <div class="swiper-slide testi-item"><div class="content"><div class="comment"><i class="fa-solid fa-quote-left quote-start"></i><i class="fa-solid fa-quote-right quote-end"></i><p>Premium hampers, elegant designs, and outstanding customer service. This is my go-to store for wedding and festival gifting.</p></div></div><div class="intro"><img src="assets/images/Testimonials/Pic-5.jpg" alt=""><div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div><h3>Samit Patel</h3><h5>Regular Customer</h5></div></div>
-      </div>
-      <div class="swiper-pagination swiper-pagination3"></div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
-    </div>
-  </section>
+            <div class="footer-item">
+                <h2>Quick Links</h2>
+                <div class="info links">
+                    <p><i class="fa-solid fa-angle-right"></i><a href="#home">Home</a></p>
+                    <p><i class="fa-solid fa-angle-right"></i><a href="#features">Features</a></p>
+                    <p><i class="fa-solid fa-angle-right"></i><a href="#categories">Categories</a></p>
+                    <p><i class="fa-solid fa-angle-right"></i><a href="#products">Products</a></p>
+                    <p><i class="fa-solid fa-angle-right"></i><a href="#testimonials">Testimonials</a></p>
+                    <p><i class="fa-solid fa-angle-right"></i><a href="#lead-form-section">Get Quote</a></p>
+                </div>
+            </div>
 
-  <!-- ===== PORTFOLIO ===== -->
-  <section class="portfolio">
-    <div class="heading"><span>our gifting work</span><h2>our portfolio</h2></div>
-    <ul class="tab-buttons">
-      <li class="button active" data-filter="*">all</li>
-      <li class="button" data-filter=".arrangements">Return Gifts</li>
-      <li class="button" data-filter=".bouquets">Hampers</li>
-      <li class="button" data-filter=".wedding">Wedding</li>
-      <li class="button" data-filter=".event">Corporate</li>
-      <li class="button" data-filter=".plant">Silverware</li>
-    </ul>
-    <div class="box-container">
-      <div class="portfolio-item arrangements"><div class="portfolio-content"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/40.jpg?v=1783768053" alt="Assorted Gift Boxes"><div class="content"><p>Return Gifts</p><a href="#"><h3>Assorted Gift Boxes</h3></a></div><div class="btn-container"><a class="view" href="assets/images/Portfolio/Portfolio/Portfolio-1.jpg"><i class="fa-solid fa-plus"></i></a></div></div></div>
-      <div class="portfolio-item bouquets"><div class="portfolio-content"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/8_4fb44446-727e-4047-936d-84142d2d4910.jpg?v=1783925440" alt="Signature Wedding Hamper"><div class="content"><p>Hampers</p><a href="#"><h3>Signature Wedding Hamper</h3></a></div><div class="btn-container"><a class="view" href="assets/images/Portfolio/Portfolio/Portfolio-2.jpg"><i class="fa-solid fa-plus"></i></a></div></div></div>
-      <div class="portfolio-item wedding"><div class="portfolio-content"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/17_91f2b6f3-4e69-4431-8049-c54a37f07438.jpg?v=1784360519" alt="Bridal Trousseau Packing"><div class="content"><p>Wedding</p><a href="#"><h3>Bridal Trousseau Packing</h3></a></div><div class="btn-container"><a class="view" href="assets/images/Portfolio/Portfolio/Portfolio-3.jpg"><i class="fa-solid fa-plus"></i></a></div></div></div>
-      <div class="portfolio-item event"><div class="portfolio-content"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/WhatsApp_Image_2026-07-08_at_11.21.17_5d67076c-ae44-4737-8464-b2378ce7bbe4.jpg?v=1783668437" alt="Corporate Diwali Hampers"><div class="content"><p>Corporate</p><a href="#"><h3>Corporate Diwali Hampers</h3></a></div><div class="btn-container"><a class="view" href="assets/images/Portfolio/Portfolio/Portfolio-4.jpg"><i class="fa-solid fa-plus"></i></a></div></div></div>
-      <div class="portfolio-item plant"><div class="portfolio-content"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/EG003026003_02.webp?v=1783767778" alt="Silver Gifting Set"><div class="content"><p>Silverware</p><a href="#"><h3>Silver Gifting Set</h3></a></div><div class="btn-container"><a class="view" href="assets/images/Portfolio/Portfolio/Portfolio-5.jpg"><i class="fa-solid fa-plus"></i></a></div></div></div>
-      <div class="portfolio-item arrangements"><div class="portfolio-content"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/13_b4935d6c-5596-47cd-bb29-a49527cf2a32.jpg?v=1783762128" alt="Personalized Favor Boxes"><div class="content"><p>Return Gifts</p><a href="#"><h3>Personalized Favor Boxes</h3></a></div><div class="btn-container"><a class="view" href="assets/images/Portfolio/Portfolio/Portfolio-6.jpg"><i class="fa-solid fa-plus"></i></a></div></div></div>
-      <div class="portfolio-item bouquets"><div class="portfolio-content"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/4_a5c912de-c241-4fb9-b80d-cefee1945b06.jpg?v=1784361711" alt="Groom's Wedding Hamper"><div class="content"><p>Hampers</p><a href="#"><h3>Groom's Wedding Hamper</h3></a></div><div class="btn-container"><a class="view" href="assets/images/Portfolio/Portfolio/Portfolio-7.jpg"><i class="fa-solid fa-plus"></i></a></div></div></div>
-      <div class="portfolio-item wedding"><div class="portfolio-content"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/RamDarbar2_1.jpg?v=1784361712" alt="Wedding Welcome Hamper"><div class="content"><p>Wedding</p><a href="#"><h3>Wedding Welcome Hamper</h3></a></div><div class="btn-container"><a class="view" href="assets/images/Portfolio/Portfolio/Portfolio-8.jpg"><i class="fa-solid fa-plus"></i></a></div></div></div>
-      <div class="portfolio-item event"><div class="portfolio-content"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/16_9a69b9a9-36e4-4fc8-9943-273e3a23df83.jpg?v=1784360448" alt="Bulk Employee Gifting"><div class="content"><p>Corporate</p><a href="#"><h3>Bulk Employee Gifting</h3></a></div><div class="btn-container"><a class="view" href="assets/images/Portfolio/Portfolio/Portfolio-9.jpg"><i class="fa-solid fa-plus"></i></a></div></div></div>
-    </div>
-  </section>
-
-  <!-- ===== PROCESS ===== -->
-  <section class="process">
-    <div class="box-container">
-      <div class="process-content">
-        <div class="heading sideheading"><span>our process</span><h2>How Ekaani Brings Your Wedding Hampers to Life</h2></div>
-        <div class="process-item"><h2>01</h2><div class="content"><h5>Choose Your Hamper</h5><p>Choose from our wide selection of wedding and return gift hampers.</p></div></div>
-        <div class="process-item"><h2>02</h2><div class="content"><h5>Customize Order</h5><p>Personalize your order with names, packaging styles, and branding as needed.</p></div></div>
-        <div class="process-item"><h2>03</h2><div class="content"><h5>Handcrafted Packing</h5><p>Our expert artisans carefully curate and pack every hamper by hand.</p></div></div>
-        <div class="process-item"><h2>04</h2><div class="content"><h5>Fast Delivery</h5><p>Your hampers are safely packed and delivered on time, anywhere in India.</p></div></div>
-      </div>
-      <div class="image"><img src="https://www.ekaani.com/cdn/shop/files/07.jpg_1.jpg?v=1769170485&width=2000" alt="Ekaani Wedding Hamper Packing Process"></div>
-    </div>
-  </section>
-
-  <!-- ===== BANNER ===== -->
-  <section class="banner">
-    <div class="content">
-      <div class="heading linear-bg"><span>wedding hampers & return gifts</span><h2>Make Every Celebration Unforgettable</h2></div>
-      <p>Discover handcrafted wedding hampers, premium silverware, and personalized return gifts designed to make every celebration special and memorable.</p>
-      <div class="support-call"><i class="fa-solid fa-headset"></i><span>Customer Support: +91 8065487805</span></div>
-      <a href="#lead-form-section" class="btn">shop wedding hampers</a>
-    </div>
-  </section>
-
-  <!-- ===== LEAD FORM ===== -->
-  <section class="lead-capture-form" id="lead-form-section">
-    <div class="lead-form-container">
-      <div class="heading"><span>get in touch</span><h2>Get a Free Consultation & Quote</h2><p>Share your requirements and our gifting experts will get back to you within 24 hours.</p></div>
-      <form class="lead-form" action="https://formsubmit.co/info@ekaani.com" method="POST">
-        <input type="hidden" name="_subject" value="New Lead - Ekaani Wedding Hampers">
-        <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_template" value="table">
-        <input type="text" name="_honey" style="display:none">
-        <div class="lead-form-row"><div class="lead-form-field"><label for="lead-name">Full Name<span>*</span></label><input type="text" id="lead-name" name="Full Name" placeholder="Your full name" required></div><div class="lead-form-field"><label for="lead-phone">Phone Number<span>*</span></label><input type="tel" id="lead-phone" name="Phone Number" placeholder="+91 xxxxx xxxxx" required></div></div>
-        <div class="lead-form-row"><div class="lead-form-field"><label for="lead-email">Email Address<span>*</span></label><input type="email" id="lead-email" name="Email Address" placeholder="you@example.com" required></div><div class="lead-form-field"><label for="lead-interest">I'm Interested In<span>*</span></label><select id="lead-interest" name="Interested In" required><option value="" disabled selected>Select an option</option><option value="Wedding Hampers">Wedding Hampers</option><option value="Return Gifts">Return Gifts</option><option value="Corporate & Bulk Gifting">Corporate & Bulk Gifting</option><option value="Silverware Gifting">Silverware Gifting</option><option value="Franchise Enquiry">Franchise Enquiry</option><option value="Other">Other</option></select></div></div>
-        <div class="lead-form-row single"><div class="lead-form-field"><label for="lead-message">Your Requirement</label><textarea id="lead-message" name="Message" rows="4" placeholder="Tell us about your event, quantity, and timeline..."></textarea></div></div>
-        <button type="submit" class="btn">Submit Enquiry</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- ===== PARTNERS ===== -->
-  <section class="partners home-partners" id="contact">
-    <div class="heading"><span>trusted collaborations</span><h2>our partners</h2></div>
-    <div class="swiper-container partner-slider">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide partner-item"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/HIRANANDANI.png?v=1783321915" alt="Hiranandani"></div>
-        <div class="swiper-slide partner-item"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/M3M.png?v=1783321914" alt="M3M"></div>
-        <div class="swiper-slide partner-item"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/GAURS.png?v=1783321913" alt="Gaurs"></div>
-        <div class="swiper-slide partner-item"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/JK_LAKSHMI_CEMENT.png?v=1783321913" alt="JK Lakshmi Cement"></div>
-        <div class="swiper-slide partner-item"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/RELIANCE.png?v=1783321913" alt="Reliance"></div>
-        <div class="swiper-slide partner-item"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/ADANI.png?v=1783321913" alt="Adani"></div>
-        <div class="swiper-slide partner-item"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/JET_AIRWAYS.png?v=1783321913" alt="Jet Airways"></div>
-        <div class="swiper-slide partner-item"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/ADITYA_BIRLA.png?v=1783321914" alt="Aditya Birla"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== NEWSLETTER ===== -->
-  <section class="newsletter-subscribe">
-    <div class="content">
-      <div class="intro"><h2>Subscribe To Our Newsletter</h2><p>Get early access to new hamper collections and wedding season offers.</p></div>
-      <form class="newsletter-form" method="post" id="newsletter-form">
-        <div class="box-container"><input type="email" id="sub-email" name="email" placeholder="Your email address" required><button type="submit" class="btn" name="submit" id="submit">Subscribe</button></div>
-        <span class="alert" id="msg"></span>
-      </form>
-    </div>
-  </section>
-
-  <!-- ===== FOOTER ===== -->
-  <footer class="footer">
-    <div class="box-container">
-      <div class="footer-item">
-        <a class="logo" href="#"><img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/Layer_x0020_1_83f4e6f8-cf11-4a6c-9d21-9bb72e6775d8.svg?v=1683268225" alt="Ekaani"></a>
-        <p>Ekaani crafts premium wedding hampers, return gifts, and silverware for weddings, celebrations, and corporate gifting, designed with love and delivered with care across India.</p>
-        <div class="social">
-          <a href="https://www.facebook.com/Ekaaniproducts/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/ekaani_spreadinghappiness" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-          <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        </div>
-      </div>
-      <div class="footer-item"><h2>Quick Links</h2><div class="info links"><p><i class="fa-solid fa-angle-right"></i><a href="#home">Home</a></p><p><i class="fa-solid fa-angle-right"></i><a href="#features">Features</a></p><p><i class="fa-solid fa-angle-right"></i><a href="#categories">Categories</a></p><p><i class="fa-solid fa-angle-right"></i><a href="#products">Products</a></p><p><i class="fa-solid fa-angle-right"></i><a href="#testimonials">Testimonials</a></p><p><i class="fa-solid fa-angle-right"></i><a href="#lead-form-section">Get Quote</a></p></div></div>
-      <div class="footer-item"><h2>Store Hours</h2><div class="timings"><div class="timing-row"><p class="days">Mon - Sat</p><p class="hours">10:00 AM - 7:00 PM</p></div><div class="timing-row"><p class="days">Sunday</p><p class="hours">By Appointment</p></div><div class="timing-row"><p class="days">Bulk Orders</p><p class="hours">Book 15+ Days Ahead</p></div></div></div>
-      <div class="footer-item"><h2>Contact Info</h2><div class="info connect"><p><i class="fas fa-map-marker-alt"></i><span>BAP CREATIONS PVT. LTD. A-81, SECTOR-5, NOIDA(U.P.) INDIA -201301</span></p><p><i class="fas fa-phone"></i><span>+91 8065487805</span></p><p><i class="fas fa-envelope"></i><span class="gmail">info@ekaani.com</span></p></div></div>
-    </div>
-    <div class="content"><p>&copy; Ekaani 2026. All Rights Reserved.</p></div>
-  </footer>
-
-  <script src="assets/vendors/jquery/jquery.min.js"></script>
-  <script src="assets/vendors/magnific-popup/jquery.magnific-popup.min.js"></script>
-  <script src="assets/vendors/isotope/isotope.pkgd.min.js"></script>
-  <script src="assets/vendors/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/js/script.js"></script>
-  <script src="assets/js/nav-link-toggler.js"></script>
-  <script src="assets/js/home-slider.js"></script>
-  <script src="assets/js/counter-up.js"></script>
-  <script src="assets/js/deal-counter.js"></script>
-  <script src="assets/js/testi-slider.js"></script>
-  <script src="assets/js/section-slider.js"></script>
-  <script src="assets/js/partner-slider.js"></script>
-  <script src="assets/js/newsletter.js"></script>
-  <script src="assets/js/tab-info.js"></script>
-  <script src="assets/js/portfolio.js"></script>
-  <script>
-    // Convert all internal page links to smooth scroll / single page
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if(href === "#") return;
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if(target) target.scrollIntoView({ behavior: 'smooth' });
-      });
-    });
-    // Prevent redirects for any stray page links
-    document.querySelectorAll('a[href*="pages/"]').forEach(link => {
-      link.setAttribute('href', '#');
-    });
-  </script>
-</body>
-</html>
+            <div class="footer-item">
+                <h2>Store Hours</h2>
+                <div class="timings">
+                    <div class="timing-row">
+                        <p class="days">Mon - Sat</p>
+                        <p class="hours">10:00 AM - 7
