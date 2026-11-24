@@ -104,12 +104,13 @@
     @media (max-width: 1023px) { .invite-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
     @media (max-width: 679px) { .invite-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
     @media (max-width: 359px) { .invite-grid { grid-template-columns: 1fr; } }
-    .home-slider .home-item { height: clamp(390px, 36vw, 690px); }
-    .home-slider .invite-hero { position: relative; background: #10162a; }
+    .home-slider { --invite-header-clearance: 112px; }
+    .home-slider .home-item { height: clamp(420px, calc(100vw / 3 + var(--invite-header-clearance)), 840px); }
+    .home-slider .invite-hero { position: relative; padding-top: var(--invite-header-clearance); background: #10162a; }
     .home-slider .invite-hero--pomegranate-acrylic { background: #f0d8b2; }
     .invite-hero picture, .invite-hero picture img { display: block; width: 100%; height: 100%; }
-    .invite-hero picture img { object-fit: cover; object-position: center; }
-    .home .invite-hero .content { background: none; justify-content: flex-start; padding: 82px 5% 35px; }
+    .invite-hero picture img { object-fit: contain; object-position: center; }
+    .home .invite-hero .content { top: var(--invite-header-clearance); height: calc(100% - var(--invite-header-clearance)); background: none; justify-content: flex-start; padding: 18px 5%; }
     .home .invite-hero .content .text { width: min(40%, 560px); text-align: left; padding: 0; }
     .home .invite-hero .content :is(h1, h2) { color: #fff; font: 500 clamp(30px, 4vw, 60px)/1.08 Georgia, serif; padding: 0; margin: 0 0 14px; }
     .home .invite-hero .content p { color: #fff; font-size: clamp(14px, 1.3vw, 19px); line-height: 1.5; padding: 0; margin: 0 0 18px; }
@@ -121,14 +122,14 @@
     .home-slider .swiper-button-next, .home-slider .swiper-button-prev { opacity: 1; color: #fff; filter: drop-shadow(0 1px 3px #000); }
     @media (max-width: 899px) {
       .home-slider .home-item, .home-slider .invite-hero { height: auto; min-height: max(510px, calc(195px + 62vw)); }
-      .home-slider .invite-hero { display: flex; flex-direction: column-reverse; justify-content: flex-end; }
+      .home-slider .invite-hero { display: flex; flex-direction: column-reverse; justify-content: flex-end; padding-top: 0; }
       .home .invite-hero .content { position: static; height: auto; padding: 92px 18px 18px; }
       .home .invite-hero .content .text { width: 100%; text-align: center; }
       .home .invite-hero .content :is(h1, h2) { margin-bottom: 8px; }
       .home .invite-hero .content p { margin-bottom: 12px; }
       .invite-hero-actions { justify-content: center; }
       .invite-hero picture { height: auto; }
-      .invite-hero picture img { height: auto; aspect-ratio: 1.6; object-fit: contain; }
+      .invite-hero picture img { height: auto; }
     }
   </style>
 </head>
@@ -199,7 +200,7 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide home-item invite-hero invite-hero--emirates-palace">
           <picture>
-            <source media="(max-width: 899px)" srcset="assets/images/invite-heroes/emirates-palace-mobile-480.webp 480w, assets/images/invite-heroes/emirates-palace-mobile-768.webp 768w" sizes="100vw">
+            <source media="(max-width: 899px)" srcset="assets/images/invite-heroes/emirates-palace-mobile-480.webp 480w, assets/images/invite-heroes/emirates-palace-mobile-768.webp 768w" sizes="100vw" width="480" height="314">
             <img src="assets/images/invite-heroes/emirates-palace-desktop-1280.webp" srcset="assets/images/invite-heroes/emirates-palace-desktop-1280.webp 1280w, assets/images/invite-heroes/emirates-palace-desktop-1920.webp 1920w" sizes="100vw" width="1280" height="427" fetchpriority="high" alt="Blue Emirates Palace wedding invitation and scroll">
           </picture>
           <div class="content"><div class="text">
@@ -213,7 +214,7 @@
         </div>
         <div class="swiper-slide home-item invite-hero invite-hero--pomegranate-acrylic">
           <picture>
-            <source media="(max-width: 899px)" srcset="assets/images/invite-heroes/pomegranate-acrylic-mobile-480.webp 480w, assets/images/invite-heroes/pomegranate-acrylic-mobile-768.webp 768w" sizes="100vw">
+            <source media="(max-width: 899px)" srcset="assets/images/invite-heroes/pomegranate-acrylic-mobile-480.webp 480w, assets/images/invite-heroes/pomegranate-acrylic-mobile-768.webp 768w" sizes="100vw" width="480" height="280">
             <img src="assets/images/invite-heroes/pomegranate-acrylic-desktop-1280.webp" srcset="assets/images/invite-heroes/pomegranate-acrylic-desktop-1280.webp 1280w, assets/images/invite-heroes/pomegranate-acrylic-desktop-1920.webp 1920w" sizes="100vw" width="1280" height="427" loading="lazy" decoding="async" fetchpriority="low" alt="Pomegranate acrylic wedding invitations with gold lattice borders">
           </picture>
           <div class="content"><div class="text">
