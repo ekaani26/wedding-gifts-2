@@ -120,6 +120,9 @@
     .home-slider .invite-hero--teal { background: #043a48; }
     .invite-hero picture, .invite-hero picture img { display: block; width: 100%; height: 100%; }
     .invite-hero picture img { object-fit: contain; object-position: center; }
+    .invite-hero--teal picture img { object-fit: cover; }
+    .home .invite-hero--teal .content .text { width: min(35%, 540px); }
+    .home .invite-hero--teal .content .invite-hero-subtitle { font-weight: 600; margin-bottom: 8px; }
     .home .invite-hero .content { top: var(--invite-header-clearance); height: calc(100% - var(--invite-header-clearance)); background: none; justify-content: flex-start; padding: 18px 5%; }
     .home .invite-hero .content .text { width: min(40%, 560px); text-align: left; padding: 0; }
     .home .invite-hero .content :is(h1, h2) { color: #fff; font: 500 clamp(30px, 4vw, 60px)/1.08 Georgia, serif; padding: 0; margin: 0 0 14px; }
@@ -139,8 +142,11 @@
       .home .invite-hero .content p { margin-bottom: 12px; }
       .invite-hero-actions { justify-content: center; }
       .invite-hero picture { height: auto; }
-      .home-slider .invite-hero--teal { justify-content: center; padding-top: 84px; }
       .invite-hero picture img { height: auto; }
+      .home .invite-hero--teal .content .text { width: 100%; }
+      .home .invite-hero--teal .content p:last-child { margin-bottom: 0; }
+      .invite-hero--teal picture { position: relative; flex: 1; min-height: clamp(225px, 60vw, 500px); }
+      .invite-hero--teal picture img { position: absolute; inset: 0; height: 100%; }
     }
     .footer .wedding-locations { max-width: 1120px; margin: 0 auto; padding: 24px 5% 30px; text-align: center; }
     .footer .wedding-locations h2 { color: #fff; font: 500 clamp(24px, 3vw, 32px)/1.2 Georgia, serif; }
@@ -260,6 +266,11 @@
             <source media="(max-width: 899px)" srcset="assets/images/invite-heroes/teal-invitation-mobile-480.webp 480w, assets/images/invite-heroes/teal-invitation-mobile-768.webp 768w" sizes="100vw" width="480" height="295">
             <img src="assets/images/invite-heroes/teal-invitation-desktop-1280.webp" srcset="assets/images/invite-heroes/teal-invitation-desktop-1280.webp 1280w, assets/images/invite-heroes/teal-invitation-desktop-1920.webp 1920w" sizes="100vw" width="1280" height="493" loading="lazy" decoding="async" fetchpriority="low" alt="Illustrated teal wedding invitation set on pink silk with flowers">
           </picture>
+          <div class="content"><div class="text">
+            <h2>Luxury Wedding Invitation Cards</h2>
+            <p class="invite-hero-subtitle">Nayika Wedding Invitations for Your Special Day.</p>
+            <p>Discover premium Nyika designer wedding cards, luxury invitation boxes and personalised wedding invitations.</p>
+          </div></div>
         </div>
       </div>
       <div class="swiper-pagination swiper-pagination1"></div>
