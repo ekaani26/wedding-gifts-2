@@ -104,6 +104,32 @@
     @media (max-width: 1023px) { .invite-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
     @media (max-width: 679px) { .invite-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
     @media (max-width: 359px) { .invite-grid { grid-template-columns: 1fr; } }
+    .home-slider .home-item { height: clamp(390px, 36vw, 690px); }
+    .home-slider .invite-hero { position: relative; background: #10162a; }
+    .home-slider .invite-hero--pomegranate-acrylic { background: #f0d8b2; }
+    .invite-hero picture, .invite-hero picture img { display: block; width: 100%; height: 100%; }
+    .invite-hero picture img { object-fit: cover; object-position: center; }
+    .home .invite-hero .content { background: none; justify-content: flex-start; padding: 82px 5% 35px; }
+    .home .invite-hero .content .text { width: min(40%, 560px); text-align: left; padding: 0; }
+    .home .invite-hero .content :is(h1, h2) { color: #fff; font: 500 clamp(30px, 4vw, 60px)/1.08 Georgia, serif; padding: 0; margin: 0 0 14px; }
+    .home .invite-hero .content p { color: #fff; font-size: clamp(14px, 1.3vw, 19px); line-height: 1.5; padding: 0; margin: 0 0 18px; }
+    .home .invite-hero--pomegranate-acrylic .content :is(h2, p) { color: #2b1a12; }
+    .invite-hero-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+    .home .invite-hero-actions .btn { background: #fff8ed; color: #211913; border: 1px solid #fff8ed; font-size: 13px; margin: 0; padding: 10px 14px; min-height: 44px; display: inline-flex; align-items: center; }
+    .home .invite-hero--pomegranate-acrylic .invite-hero-actions .btn { background: #302016; border-color: #302016; color: #fff; }
+    .home .invite-hero-actions .btn:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+    .home-slider .swiper-button-next, .home-slider .swiper-button-prev { opacity: 1; color: #fff; filter: drop-shadow(0 1px 3px #000); }
+    @media (max-width: 899px) {
+      .home-slider .home-item, .home-slider .invite-hero { height: auto; min-height: max(510px, calc(195px + 62vw)); }
+      .home-slider .invite-hero { display: flex; flex-direction: column-reverse; justify-content: flex-end; }
+      .home .invite-hero .content { position: static; height: auto; padding: 92px 18px 18px; }
+      .home .invite-hero .content .text { width: 100%; text-align: center; }
+      .home .invite-hero .content :is(h1, h2) { margin-bottom: 8px; }
+      .home .invite-hero .content p { margin-bottom: 12px; }
+      .invite-hero-actions { justify-content: center; }
+      .invite-hero picture { height: auto; }
+      .invite-hero picture img { height: auto; aspect-ratio: 1.6; object-fit: contain; }
+    }
   </style>
 </head>
 <body>
@@ -171,8 +197,36 @@
   <section class="home" id="home">
     <div class="swiper-container home-slider">
       <div class="swiper-wrapper">
+        <div class="swiper-slide home-item invite-hero invite-hero--emirates-palace">
+          <picture>
+            <source media="(max-width: 899px)" srcset="assets/images/invite-heroes/emirates-palace-mobile-480.webp 480w, assets/images/invite-heroes/emirates-palace-mobile-768.webp 768w" sizes="100vw">
+            <img src="assets/images/invite-heroes/emirates-palace-desktop-1280.webp" srcset="assets/images/invite-heroes/emirates-palace-desktop-1280.webp 1280w, assets/images/invite-heroes/emirates-palace-desktop-1920.webp 1920w" sizes="100vw" width="1280" height="427" fetchpriority="high" alt="Blue Emirates Palace wedding invitation and scroll">
+          </picture>
+          <div class="content"><div class="text">
+            <h1>Customised Wedding Invitation Cards</h1>
+            <p>Explore 11 designs from ₹400 to ₹2,000.</p>
+            <div class="invite-hero-actions">
+              <a class="btn" href="#wedding-invites">View Wedding Invites</a>
+              <a class="btn" href="#lead-form-section">Get a Quote</a>
+            </div>
+          </div></div>
+        </div>
+        <div class="swiper-slide home-item invite-hero invite-hero--pomegranate-acrylic">
+          <picture>
+            <source media="(max-width: 899px)" srcset="assets/images/invite-heroes/pomegranate-acrylic-mobile-480.webp 480w, assets/images/invite-heroes/pomegranate-acrylic-mobile-768.webp 768w" sizes="100vw">
+            <img src="assets/images/invite-heroes/pomegranate-acrylic-desktop-1280.webp" srcset="assets/images/invite-heroes/pomegranate-acrylic-desktop-1280.webp 1280w, assets/images/invite-heroes/pomegranate-acrylic-desktop-1920.webp 1920w" sizes="100vw" width="1280" height="427" loading="lazy" decoding="async" fetchpriority="low" alt="Pomegranate acrylic wedding invitations with gold lattice borders">
+          </picture>
+          <div class="content"><div class="text">
+            <h2>Acrylic Wedding Invitation Cards</h2>
+            <p>Pomegranate Design · ₹650 for two acrylic cards with envelope.</p>
+            <div class="invite-hero-actions">
+              <a class="btn" href="#wedding-invites">View Wedding Invites</a>
+              <a class="btn" href="#lead-form-section">Get a Quote</a>
+            </div>
+          </div></div>
+        </div>
         <div class="swiper-slide home-item">
-          <img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/07.jpg_1.jpg?v=1769170485&amp;width=1024" srcset="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/07.jpg_1.jpg?v=1769170485&amp;width=480 480w, https://cdn.shopify.com/s/files/1/0748/5014/0446/files/07.jpg_1.jpg?v=1769170485&amp;width=768 768w, https://cdn.shopify.com/s/files/1/0748/5014/0446/files/07.jpg_1.jpg?v=1769170485&amp;width=1024 1024w, https://cdn.shopify.com/s/files/1/0748/5014/0446/files/07.jpg_1.jpg?v=1769170485&amp;width=1440 1440w, https://cdn.shopify.com/s/files/1/0748/5014/0446/files/07.jpg_1.jpg?v=1769170485&amp;width=1920 1920w" sizes="100vw" fetchpriority="high" alt="Ekaani Wedding Hampers">
+          <img src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/07.jpg_1.jpg?v=1769170485&amp;width=1024" srcset="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/07.jpg_1.jpg?v=1769170485&amp;width=480 480w, https://cdn.shopify.com/s/files/1/0748/5014/0446/files/07.jpg_1.jpg?v=1769170485&amp;width=768 768w, https://cdn.shopify.com/s/files/1/0748/5014/0446/files/07.jpg_1.jpg?v=1769170485&amp;width=1024 1024w, https://cdn.shopify.com/s/files/1/0748/5014/0446/files/07.jpg_1.jpg?v=1769170485&amp;width=1440 1440w, https://cdn.shopify.com/s/files/1/0748/5014/0446/files/07.jpg_1.jpg?v=1769170485&amp;width=1920 1920w" sizes="100vw" loading="lazy" decoding="async" fetchpriority="low" alt="Ekaani Wedding Hampers">
           <div class="content"><div class="text"><h5>Welcome to Ekaani</h5><h2>Wedding Hampers & Return Gifts, Curated With Love</h2><p>Handcrafted hampers, premium silverware and thoughtfully designed return gifts – trusted by 10,000+ Indian families.</p><a href="#lead-form-section" class="btn">Get a Quote</a> <a href="#wedding-invites" class="btn">Wedding Invites</a></div></div>
         </div>
         <div class="swiper-slide home-item">
