@@ -168,17 +168,18 @@
     .wedding-stores .wedding-store-cities li a { display: inline-block; height: auto; min-height: 0; border: 0; padding: 6px 0; text-decoration: underline; font-size: 13px; }
     .footer .wedding-store-locator { display: inline-block; margin-top: 18px; color: #fff; text-decoration: underline; font-size: 15px; }
     @media (max-width: 679px) { .wedding-store-cities { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-    .offers .offer-item--ganesha { height: auto; min-height: 30rem; aspect-ratio: 1.6; background: #073b3d; }
-    .offers .offer-item--ganesha .content {
+    .offers .offer-item--cover { height: auto; min-height: 30rem; aspect-ratio: 1.6; background: #073b3d; }
+    .offers .offer-item--cover .content {
       z-index: 1;
       background: linear-gradient(to top, rgba(0, 0, 0, .88), rgba(0, 0, 0, .63) 34%, transparent 75%);
     }
-    .offers .offer-item--ganesha .content h3,
-    .offers .offer-item--ganesha .content p { color: #fff8ec; text-shadow: 0 1px 4px #000; }
-    .offers .offer-item--ganesha .btn { background: #fff8ec; color: #073b3d; border-color: #fff8ec; }
-    .offers .offer-item--ganesha .btn:hover { background: #ead9c2; color: #073b3d; }
-    .offers .offer-item--ganesha img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 48%; }
-    .offers .offer-item--ganesha:hover img { transform: none; }
+    .offers .offer-item--cover .content h3,
+    .offers .offer-item--cover .content p { color: #fff8ec; text-shadow: 0 1px 4px #000; }
+    .offers .offer-item--cover .btn { background: #fff8ec; color: #073b3d; border-color: #fff8ec; }
+    .offers .offer-item--cover .btn:hover { background: #ead9c2; color: #073b3d; }
+    .offers .offer-item--cover img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 48%; }
+    .offers .offer-item--cover:hover img { transform: none; }
+    .offers .offer-item--floral img { object-position: 85% center; }
   </style>
 </head>
 <body>
@@ -496,7 +497,7 @@
   <!-- ===== OFFERS ===== -->
   <section class="offers">
     <div class="box-container">
-      <div class="offer-item offer-item--ganesha">
+      <div class="offer-item offer-item--cover">
         <div class="content">
           <h3>Wedding Hamper Sale</h3>
           <p>Up to 25% Off on Bulk Orders</p>
@@ -504,7 +505,10 @@
         </div>
         <img loading="lazy" decoding="async" src="assets/images/ganesha-wedding-hamper.webp" width="510" height="489" alt="Teal Ganesha wedding hamper with gold-lidded jars on pink silk">
       </div>
-      <div class="offer-item"><img loading="lazy" decoding="async" src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/40.jpg?v=1783768053&amp;width=900" alt="Return Gift Hampers"><div class="content"><h3>Return Gift Hampers</h3><p>Flat 20% Off First Order</p><a href="#lead-form-section" class="btn">Shop Now</a></div></div>
+      <div class="offer-item offer-item--cover offer-item--floral">
+        <div class="content"><h3>Return Gift Hampers</h3><p>Flat 20% Off First Order</p><a href="#lead-form-section" class="btn">Shop Now</a></div>
+        <img loading="lazy" decoding="async" src="assets/images/floral-return-gift-hamper.webp" width="1440" height="554" alt="Golden floral return gift hamper with Ganesha jars">
+      </div>
     </div>
   </section>
 
