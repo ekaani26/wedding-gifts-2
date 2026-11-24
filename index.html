@@ -168,6 +168,18 @@
     .wedding-stores .wedding-store-cities li a { display: inline-block; height: auto; min-height: 0; border: 0; padding: 6px 0; text-decoration: underline; font-size: 13px; }
     .footer .wedding-store-locator { display: inline-block; margin-top: 18px; color: #fff; text-decoration: underline; font-size: 15px; }
     @media (max-width: 679px) { .wedding-store-cities { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    .offers .offer-item--ganesha { display: grid; grid-template-columns: 1fr 1fr; height: auto; min-height: 30rem; background: #073b3d; }
+    .offers .offer-item--ganesha .content { position: static; height: auto; justify-content: center; background: none; }
+    .offers .offer-item--ganesha .content h3,
+    .offers .offer-item--ganesha .content p { color: #fff8ec; }
+    .offers .offer-item--ganesha .btn { background: #fff8ec; color: #073b3d; border-color: #fff8ec; }
+    .offers .offer-item--ganesha .btn:hover { background: #ead9c2; color: #073b3d; }
+    .offers .offer-item--ganesha img { display: block; align-self: center; width: 100%; height: auto; }
+    .offers .offer-item--ganesha:hover img { transform: none; }
+    @media (max-width: 480px) {
+      .offers .offer-item--ganesha { grid-template-columns: 1fr; }
+      .offers .offer-item--ganesha img { grid-row: 1; }
+    }
   </style>
 </head>
 <body>
@@ -485,7 +497,14 @@
   <!-- ===== OFFERS ===== -->
   <section class="offers">
     <div class="box-container">
-      <div class="offer-item"><img loading="lazy" decoding="async" src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/4_a5c912de-c241-4fb9-b80d-cefee1945b06.jpg?v=1784361711&amp;width=900" alt="Wedding Hamper Sale"><div class="content"><h3>Wedding Hamper Sale</h3><p>Up to 25% Off on Bulk Orders</p><a href="#lead-form-section" class="btn">Shop Now</a></div></div>
+      <div class="offer-item offer-item--ganesha">
+        <div class="content">
+          <h3>Wedding Hamper Sale</h3>
+          <p>Up to 25% Off on Bulk Orders</p>
+          <a href="#lead-form-section" class="btn">Shop Now</a>
+        </div>
+        <img loading="lazy" decoding="async" src="assets/images/ganesha-wedding-hamper.webp" width="510" height="489" alt="Teal Ganesha wedding hamper with gold-lidded jars on pink silk">
+      </div>
       <div class="offer-item"><img loading="lazy" decoding="async" src="https://cdn.shopify.com/s/files/1/0748/5014/0446/files/40.jpg?v=1783768053&amp;width=900" alt="Return Gift Hampers"><div class="content"><h3>Return Gift Hampers</h3><p>Flat 20% Off First Order</p><a href="#lead-form-section" class="btn">Shop Now</a></div></div>
     </div>
   </section>
