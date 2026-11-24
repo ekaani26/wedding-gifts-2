@@ -91,7 +91,14 @@
     .invite-heading { text-align: center; margin: 0 auto 28px; max-width: 680px; }
     .invite-heading h2 { color: #221b17; font-size: clamp(26px, 4vw, 40px); line-height: 1.2; margin-bottom: 10px; }
     .invite-heading p { color: #544942; font-size: 15px; line-height: 1.5; margin: 6px 0; }
-    .invite-grid { max-width: 1216px; margin: 0 auto; display: grid; gap: 16px; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .invite-carousel { max-width: 1120px; margin: 0 auto; }
+    .invite-carousel-controls { display: flex; justify-content: flex-end; gap: 8px; margin-bottom: 12px; }
+    .invite-carousel-controls[hidden] { display: none; }
+    .invite-carousel-controls button { display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid #544033; background: #fff; color: #251b16; font-size: 24px; cursor: pointer; }
+    .invite-carousel-controls button:disabled { opacity: .42; cursor: default; }
+    .invite-carousel-controls button:focus-visible, .invite-grid:focus-visible { outline: 2px solid #544033; outline-offset: 3px; }
+    .invite-grid { display: grid; grid-auto-flow: column; grid-auto-columns: calc((100% - 18px) / 2); gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; }
+    .invite-grid .invite-card { scroll-snap-align: start; }
     .invite-card { background: #fff; border: 1px solid #e9dfd5; display: flex; flex-direction: column; min-width: 0; }
     .invite-card img { width: 100%; height: auto; display: block; aspect-ratio: 1; object-fit: contain; }
     .invite-details { flex: 1; display: flex; flex-direction: column; gap: 8px; padding: 14px; }
@@ -101,9 +108,7 @@
     .invite-details a { margin-top: auto; display: grid; place-items: center; min-height: 44px; background: #251b16; color: #fff; font-size: 14px; }
     .invite-details a:hover, .invite-details a:focus-visible { background: #544033; }
     #lead-form-section { scroll-margin-top: 130px; }
-    @media (max-width: 1023px) { .invite-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-    @media (max-width: 679px) { .invite-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
-    @media (max-width: 359px) { .invite-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 679px) { .invite-grid { grid-auto-columns: 100%; gap: 12px; } }
     .home-slider { --invite-header-clearance: 112px; }
     .home-slider .home-item { height: clamp(420px, calc(100vw / 3 + var(--invite-header-clearance)), 840px); }
     .home-slider .invite-hero { position: relative; padding-top: var(--invite-header-clearance); background: #10162a; }
@@ -239,9 +244,14 @@
       <p>Catalogue price range <strong>₹400–₹2,000</strong></p>
       <p>Choose a design and enquire for a quote based on your quantity and customisation.</p>
     </header>
-    <div class="invite-grid">
+    <div class="invite-carousel">
+    <div class="invite-carousel-controls" hidden>
+      <button type="button" aria-controls="invite-carousel-track" aria-label="Previous wedding invite" data-invite-step="-1">‹</button>
+      <button type="button" aria-controls="invite-carousel-track" aria-label="Next wedding invite" data-invite-step="1">›</button>
+    </div>
+    <div class="invite-grid" id="invite-carousel-track" tabindex="0" role="group" aria-label="Wedding invitation designs">
       <article class="invite-card">
-        <img src="assets/images/wedding-invites/sheesh-mahal-360.webp" srcset="assets/images/wedding-invites/sheesh-mahal-360.webp 360w, assets/images/wedding-invites/sheesh-mahal-720.webp 720w" sizes="(max-width: 359px) calc(100vw - 32px), (max-width: 679px) 45vw, (max-width: 1023px) 30vw, (max-width: 1248px) 23vw, 284px" width="360" height="360" loading="lazy" decoding="async" alt="Sheesh Mahal wedding invitation from the Ekaani catalogue">
+        <img src="assets/images/wedding-invites/sheesh-mahal-360.webp" srcset="assets/images/wedding-invites/sheesh-mahal-360.webp 360w, assets/images/wedding-invites/sheesh-mahal-720.webp 720w" sizes="(max-width: 679px) calc(100vw - 32px), (max-width: 1152px) calc(50vw - 25px), 551px" width="360" height="360" loading="lazy" decoding="async" alt="Sheesh Mahal wedding invitation from the Ekaani catalogue">
         <div class="invite-details">
           <h3>Sheesh Mahal</h3>
           <p class="invite-price">₹400</p>
@@ -250,7 +260,7 @@
         </div>
       </article>
       <article class="invite-card">
-        <img src="assets/images/wedding-invites/emirates-palace-360.webp" srcset="assets/images/wedding-invites/emirates-palace-360.webp 360w, assets/images/wedding-invites/emirates-palace-720.webp 720w" sizes="(max-width: 359px) calc(100vw - 32px), (max-width: 679px) 45vw, (max-width: 1023px) 30vw, (max-width: 1248px) 23vw, 284px" width="360" height="360" loading="lazy" decoding="async" alt="Emirates Palace wedding invitation from the Ekaani catalogue">
+        <img src="assets/images/wedding-invites/emirates-palace-360.webp" srcset="assets/images/wedding-invites/emirates-palace-360.webp 360w, assets/images/wedding-invites/emirates-palace-720.webp 720w" sizes="(max-width: 679px) calc(100vw - 32px), (max-width: 1152px) calc(50vw - 25px), 551px" width="360" height="360" loading="lazy" decoding="async" alt="Emirates Palace wedding invitation from the Ekaani catalogue">
         <div class="invite-details">
           <h3>Emirates Palace</h3>
           <p class="invite-price">₹500</p>
@@ -259,7 +269,7 @@
         </div>
       </article>
       <article class="invite-card">
-        <img src="assets/images/wedding-invites/geet-govind-360.webp" srcset="assets/images/wedding-invites/geet-govind-360.webp 360w, assets/images/wedding-invites/geet-govind-720.webp 720w" sizes="(max-width: 359px) calc(100vw - 32px), (max-width: 679px) 45vw, (max-width: 1023px) 30vw, (max-width: 1248px) 23vw, 284px" width="360" height="360" loading="lazy" decoding="async" alt="Geet Govind wedding invitation from the Ekaani catalogue">
+        <img src="assets/images/wedding-invites/geet-govind-360.webp" srcset="assets/images/wedding-invites/geet-govind-360.webp 360w, assets/images/wedding-invites/geet-govind-720.webp 720w" sizes="(max-width: 679px) calc(100vw - 32px), (max-width: 1152px) calc(50vw - 25px), 551px" width="360" height="360" loading="lazy" decoding="async" alt="Geet Govind wedding invitation from the Ekaani catalogue">
         <div class="invite-details">
           <h3>Geet Govind</h3>
           <p class="invite-price">₹650</p>
@@ -268,7 +278,7 @@
         </div>
       </article>
       <article class="invite-card">
-        <img src="assets/images/wedding-invites/krishna-art-360.webp" srcset="assets/images/wedding-invites/krishna-art-360.webp 360w, assets/images/wedding-invites/krishna-art-720.webp 720w" sizes="(max-width: 359px) calc(100vw - 32px), (max-width: 679px) 45vw, (max-width: 1023px) 30vw, (max-width: 1248px) 23vw, 284px" width="360" height="360" loading="lazy" decoding="async" alt="Krishna Art wedding invitation from the Ekaani catalogue">
+        <img src="assets/images/wedding-invites/krishna-art-360.webp" srcset="assets/images/wedding-invites/krishna-art-360.webp 360w, assets/images/wedding-invites/krishna-art-720.webp 720w" sizes="(max-width: 679px) calc(100vw - 32px), (max-width: 1152px) calc(50vw - 25px), 551px" width="360" height="360" loading="lazy" decoding="async" alt="Krishna Art wedding invitation from the Ekaani catalogue">
         <div class="invite-details">
           <h3>Krishna Art</h3>
           <p class="invite-price">₹2,000</p>
@@ -277,7 +287,7 @@
         </div>
       </article>
       <article class="invite-card">
-        <img src="assets/images/wedding-invites/pichwai-art-360.webp" srcset="assets/images/wedding-invites/pichwai-art-360.webp 360w, assets/images/wedding-invites/pichwai-art-720.webp 720w" sizes="(max-width: 359px) calc(100vw - 32px), (max-width: 679px) 45vw, (max-width: 1023px) 30vw, (max-width: 1248px) 23vw, 284px" width="360" height="360" loading="lazy" decoding="async" alt="Pichwai Art wedding invitation from the Ekaani catalogue">
+        <img src="assets/images/wedding-invites/pichwai-art-360.webp" srcset="assets/images/wedding-invites/pichwai-art-360.webp 360w, assets/images/wedding-invites/pichwai-art-720.webp 720w" sizes="(max-width: 679px) calc(100vw - 32px), (max-width: 1152px) calc(50vw - 25px), 551px" width="360" height="360" loading="lazy" decoding="async" alt="Pichwai Art wedding invitation from the Ekaani catalogue">
         <div class="invite-details">
           <h3>Pichwai Art</h3>
           <p class="invite-price">₹500</p>
@@ -286,7 +296,7 @@
         </div>
       </article>
       <article class="invite-card">
-        <img src="assets/images/wedding-invites/pomegranate-360.webp" srcset="assets/images/wedding-invites/pomegranate-360.webp 360w, assets/images/wedding-invites/pomegranate-720.webp 720w" sizes="(max-width: 359px) calc(100vw - 32px), (max-width: 679px) 45vw, (max-width: 1023px) 30vw, (max-width: 1248px) 23vw, 284px" width="360" height="360" loading="lazy" decoding="async" alt="Pomegranate Design wedding invitation from the Ekaani catalogue">
+        <img src="assets/images/wedding-invites/pomegranate-360.webp" srcset="assets/images/wedding-invites/pomegranate-360.webp 360w, assets/images/wedding-invites/pomegranate-720.webp 720w" sizes="(max-width: 679px) calc(100vw - 32px), (max-width: 1152px) calc(50vw - 25px), 551px" width="360" height="360" loading="lazy" decoding="async" alt="Pomegranate Design wedding invitation from the Ekaani catalogue">
         <div class="invite-details">
           <h3>Pomegranate Design</h3>
           <p class="invite-price">₹650</p>
@@ -295,7 +305,7 @@
         </div>
       </article>
       <article class="invite-card">
-        <img src="assets/images/wedding-invites/tree-of-life-elephant-360.webp" srcset="assets/images/wedding-invites/tree-of-life-elephant-360.webp 360w, assets/images/wedding-invites/tree-of-life-elephant-720.webp 720w" sizes="(max-width: 359px) calc(100vw - 32px), (max-width: 679px) 45vw, (max-width: 1023px) 30vw, (max-width: 1248px) 23vw, 284px" width="360" height="360" loading="lazy" decoding="async" alt="Tree of Life Elephant wedding invitation from the Ekaani catalogue">
+        <img src="assets/images/wedding-invites/tree-of-life-elephant-360.webp" srcset="assets/images/wedding-invites/tree-of-life-elephant-360.webp 360w, assets/images/wedding-invites/tree-of-life-elephant-720.webp 720w" sizes="(max-width: 679px) calc(100vw - 32px), (max-width: 1152px) calc(50vw - 25px), 551px" width="360" height="360" loading="lazy" decoding="async" alt="Tree of Life Elephant wedding invitation from the Ekaani catalogue">
         <div class="invite-details">
           <h3>Tree of Life Elephant</h3>
           <p class="invite-price">₹500</p>
@@ -304,7 +314,7 @@
         </div>
       </article>
       <article class="invite-card">
-        <img src="assets/images/wedding-invites/ganesha-360.webp" srcset="assets/images/wedding-invites/ganesha-360.webp 360w, assets/images/wedding-invites/ganesha-720.webp 720w" sizes="(max-width: 359px) calc(100vw - 32px), (max-width: 679px) 45vw, (max-width: 1023px) 30vw, (max-width: 1248px) 23vw, 284px" width="360" height="360" loading="lazy" decoding="async" alt="Ganesha Design wedding invitation from the Ekaani catalogue">
+        <img src="assets/images/wedding-invites/ganesha-360.webp" srcset="assets/images/wedding-invites/ganesha-360.webp 360w, assets/images/wedding-invites/ganesha-720.webp 720w" sizes="(max-width: 679px) calc(100vw - 32px), (max-width: 1152px) calc(50vw - 25px), 551px" width="360" height="360" loading="lazy" decoding="async" alt="Ganesha Design wedding invitation from the Ekaani catalogue">
         <div class="invite-details">
           <h3>Ganesha Design</h3>
           <p class="invite-price">₹500</p>
@@ -313,7 +323,7 @@
         </div>
       </article>
       <article class="invite-card">
-        <img src="assets/images/wedding-invites/royal-jaipur-360.webp" srcset="assets/images/wedding-invites/royal-jaipur-360.webp 360w, assets/images/wedding-invites/royal-jaipur-720.webp 720w" sizes="(max-width: 359px) calc(100vw - 32px), (max-width: 679px) 45vw, (max-width: 1023px) 30vw, (max-width: 1248px) 23vw, 284px" width="360" height="360" loading="lazy" decoding="async" alt="Royal Jaipur wedding invitation from the Ekaani catalogue">
+        <img src="assets/images/wedding-invites/royal-jaipur-360.webp" srcset="assets/images/wedding-invites/royal-jaipur-360.webp 360w, assets/images/wedding-invites/royal-jaipur-720.webp 720w" sizes="(max-width: 679px) calc(100vw - 32px), (max-width: 1152px) calc(50vw - 25px), 551px" width="360" height="360" loading="lazy" decoding="async" alt="Royal Jaipur wedding invitation from the Ekaani catalogue">
         <div class="invite-details">
           <h3>Royal Jaipur</h3>
           <p class="invite-price">₹1,500</p>
@@ -322,7 +332,7 @@
         </div>
       </article>
       <article class="invite-card">
-        <img src="assets/images/wedding-invites/royal-king-360.webp" srcset="assets/images/wedding-invites/royal-king-360.webp 360w, assets/images/wedding-invites/royal-king-720.webp 720w" sizes="(max-width: 359px) calc(100vw - 32px), (max-width: 679px) 45vw, (max-width: 1023px) 30vw, (max-width: 1248px) 23vw, 284px" width="360" height="360" loading="lazy" decoding="async" alt="Royal King Wedding wedding invitation from the Ekaani catalogue">
+        <img src="assets/images/wedding-invites/royal-king-360.webp" srcset="assets/images/wedding-invites/royal-king-360.webp 360w, assets/images/wedding-invites/royal-king-720.webp 720w" sizes="(max-width: 679px) calc(100vw - 32px), (max-width: 1152px) calc(50vw - 25px), 551px" width="360" height="360" loading="lazy" decoding="async" alt="Royal King Wedding wedding invitation from the Ekaani catalogue">
         <div class="invite-details">
           <h3>Royal King Wedding</h3>
           <p class="invite-price">₹500</p>
@@ -331,7 +341,7 @@
         </div>
       </article>
       <article class="invite-card">
-        <img src="assets/images/wedding-invites/nayika-360.webp" srcset="assets/images/wedding-invites/nayika-360.webp 360w, assets/images/wedding-invites/nayika-720.webp 720w" sizes="(max-width: 359px) calc(100vw - 32px), (max-width: 679px) 45vw, (max-width: 1023px) 30vw, (max-width: 1248px) 23vw, 284px" width="360" height="360" loading="lazy" decoding="async" alt="Nayika Design wedding invitation from the Ekaani catalogue">
+        <img src="assets/images/wedding-invites/nayika-360.webp" srcset="assets/images/wedding-invites/nayika-360.webp 360w, assets/images/wedding-invites/nayika-720.webp 720w" sizes="(max-width: 679px) calc(100vw - 32px), (max-width: 1152px) calc(50vw - 25px), 551px" width="360" height="360" loading="lazy" decoding="async" alt="Nayika Design wedding invitation from the Ekaani catalogue">
         <div class="invite-details">
           <h3>Nayika Design</h3>
           <p class="invite-price">₹500</p>
@@ -339,6 +349,7 @@
           <a href="#lead-form-section" data-invite="Nayika Design" aria-label="Enquire about Nayika Design">Enquire</a>
         </div>
       </article>
+    </div>
     </div>
   </section>
 
@@ -708,6 +719,27 @@
     document.querySelectorAll('a[href*="pages/"]').forEach(link => {
       link.setAttribute('href', '#');
     });
+
+    const inviteTrack = document.getElementById('invite-carousel-track');
+    const inviteControls = document.querySelector('.invite-carousel-controls');
+    const [previousInvite, nextInvite] = inviteControls.querySelectorAll('button');
+    const updateInviteControls = () => {
+      previousInvite.disabled = inviteTrack.scrollLeft <= 1;
+      nextInvite.disabled = inviteTrack.scrollLeft + inviteTrack.clientWidth >= inviteTrack.scrollWidth - 2;
+    };
+    inviteControls.addEventListener('click', event => {
+      const step = Number(event.target.dataset.inviteStep);
+      if (!step) return;
+      const [first, second] = inviteTrack.querySelectorAll('.invite-card');
+      inviteTrack.scrollBy({
+        left: step * (second.offsetLeft - first.offsetLeft),
+        behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+      });
+    });
+    inviteTrack.addEventListener('scroll', updateInviteControls, { passive: true });
+    window.addEventListener('resize', updateInviteControls);
+    inviteControls.hidden = false;
+    updateInviteControls();
 
     document.querySelectorAll('[data-invite]').forEach(link => {
       link.addEventListener('click', () => {
