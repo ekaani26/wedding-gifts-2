@@ -34,23 +34,29 @@
     .partners.home-partners .partner-item { display: flex; align-items: center; justify-content: center; height: 90px; padding: 10px 20px; }
     .partners.home-partners .partner-item img { max-height: 60px; max-width: 100%; width: auto; height: auto; object-fit: contain; filter: grayscale(0%) !important; opacity: 1 !important; transition: all 0.3s ease; }
     .partners.home-partners .partner-item img:hover { filter: grayscale(0%) !important; opacity: 1 !important; }
-    .lead-capture-form { padding: 80px 20px; background: #faf7f2; display: flex; justify-content: center; }
-    .lead-capture-form .lead-form-container { width: 100%; max-width: 850px; }
-    .lead-capture-form .heading { text-align: center; margin-bottom: 40px; }
-    .lead-capture-form .heading span { display: inline-block; text-transform: uppercase; letter-spacing: 1px; font-size: 14px; color: #b8860b; font-weight: 600; margin-bottom: 8px; }
-    .lead-capture-form .heading h2 { font-size: 32px; margin: 0 0 12px; color: #1a1a1a; }
-    .lead-capture-form .heading p { color: #555; font-size: 15px; max-width: 550px; margin: 0 auto; line-height: 1.6; }
-    .lead-form { background: #ffffff; padding: 40px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.06); }
-    .lead-form-row { display: flex; gap: 24px; margin-bottom: 20px; }
-    .lead-form-row.single { display: block; }
-    .lead-form-field { flex: 1; display: flex; flex-direction: column; }
-    .lead-form-field label { font-size: 14px; font-weight: 600; color: #333; margin-bottom: 8px; }
-    .lead-form-field label span { color: #c0392b; margin-left: 2px; }
-    .lead-form-field input, .lead-form-field select, .lead-form-field textarea { padding: 12px 14px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; font-family: inherit; color: #1a1a1a; width: 100%; box-sizing: border-box; background: #fff; }
-    .lead-form-field input:focus, .lead-form-field select:focus, .lead-form-field textarea:focus { outline: none; border-color: #b8860b; }
-    .lead-form-field textarea { resize: vertical; }
-    .lead-form button.btn { display: inline-block; margin-top: 8px; cursor: pointer; border: none; background: #b8860b; color: #fff; padding: 12px 30px; border-radius: 6px; font-weight: 600; transition: 0.3s; }
-    .lead-form button.btn:hover { background: #a06f0a; }
+    .lead-capture-form { padding: clamp(44px, 7vw, 80px) 16px; background: #faf7f2; display: flex; justify-content: center; }
+    .lead-capture-form .lead-form-container { width: 100%; max-width: 760px; min-width: 0; }
+    .lead-capture-form .heading { text-align: center; margin: 0 0 24px; }
+    .lead-capture-form .heading span { display: inline-block; text-transform: uppercase; letter-spacing: 1px; font-size: 13px; color: #795715; font-weight: 600; margin-bottom: 8px; }
+    .lead-capture-form .heading h2 { font-size: clamp(24px, 4vw, 34px); margin: 0 0 10px; color: #1a1a1a; line-height: 1.2; }
+    .lead-capture-form .heading p { color: #555; font-size: 15px; max-width: 550px; margin: 0 auto; line-height: 1.5; }
+    .lead-form { display: grid; gap: 18px; background: #fff; padding: clamp(16px, 4vw, 36px); border: 1px solid #e9dfd5; border-radius: 12px; box-shadow: 0 8px 28px rgba(0,0,0,0.06); }
+    .lead-form-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .lead-form-row.single { grid-template-columns: minmax(0, 1fr); }
+    .lead-form-field { display: grid; gap: 7px; min-width: 0; }
+    .lead-form-field label { font-size: 14px; line-height: 1.35; font-weight: 600; color: #333; }
+    .lead-form-field label span { color: #a32920; margin-left: 3px; }
+    .lead-form-field :is(input, select, textarea) { display: block; width: 100%; min-width: 0; min-height: 48px; box-sizing: border-box; padding: 10px 12px; border: 1px solid #bdb4ab; border-radius: 6px; font: inherit; font-size: 16px; line-height: 1.4; color: #1a1a1a; background: #fff; }
+    .lead-form-field select { appearance: auto; }
+    .lead-form-field :is(input, select, textarea):focus { border-color: #795715; outline: 2px solid #795715; outline-offset: 1px; }
+    .lead-form-field textarea { resize: vertical; min-height: 106px; }
+    .lead-form button.btn { min-height: 48px; width: 100%; margin: 0; cursor: pointer; border: 1px solid #302016; background: #302016; color: #fff; padding: 10px 16px; border-radius: 6px; font-size: 16px; font-weight: 600; }
+    .lead-form button.btn:hover { background: #544033; }
+    .lead-form button.btn:focus-visible { outline: 2px solid #795715; outline-offset: 2px; }
+    @media (max-width: 599px) {
+      .lead-form, .lead-form-row { gap: 14px; }
+      .lead-form-row { grid-template-columns: minmax(0, 1fr); }
+    }
     .product-item .rating, .product-item .discount { display: none !important; }
     html { scroll-behavior: smooth; }
     .icon-container .btn { display: inline-block; }
@@ -598,17 +604,17 @@
       <div class="heading"><span>get in touch</span><h2>Get a Free Consultation & Quote</h2><p>Share your requirements and our gifting experts will get back to you within 24 hours.</p></div>
       
       <!-- Success message (hidden by default) -->
-      <div id="formSuccessMessage" class="form-success-message">
+      <div id="formSuccessMessage" role="status" class="form-success-message">
         <i class="fa-solid fa-circle-check"></i> WhatsApp opened with your enquiry. Tap Send in WhatsApp to share it with Ekaani.
       </div>
 
       <form class="lead-form" id="leadForm">
         <div class="lead-form-row">
-          <div class="lead-form-field"><label for="lead-name">Full Name<span>*</span></label><input type="text" id="lead-name" placeholder="Your full name" required></div>
-          <div class="lead-form-field"><label for="lead-phone">Phone Number<span>*</span></label><input type="tel" id="lead-phone" placeholder="+91 xxxxx xxxxx" required></div>
+          <div class="lead-form-field"><label for="lead-name">Full Name<span>*</span></label><input type="text" id="lead-name" autocomplete="name" placeholder="Your full name" required></div>
+          <div class="lead-form-field"><label for="lead-phone">Phone Number<span>*</span></label><input type="tel" id="lead-phone" autocomplete="tel" placeholder="+91 xxxxx xxxxx" required></div>
         </div>
         <div class="lead-form-row">
-          <div class="lead-form-field"><label for="lead-email">Email Address<span>*</span></label><input type="email" id="lead-email" placeholder="you@example.com" required></div>
+          <div class="lead-form-field"><label for="lead-email">Email Address<span>*</span></label><input type="email" id="lead-email" autocomplete="email" placeholder="you@example.com" required></div>
           <div class="lead-form-field"><label for="lead-interest">I'm Interested In<span>*</span></label>
             <select id="lead-interest" required>
               <option value="" disabled selected>Select an option</option>
