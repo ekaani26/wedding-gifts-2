@@ -117,6 +117,7 @@
     .home-slider .home-item { height: clamp(420px, calc(100vw / 3 + var(--invite-header-clearance)), 840px); }
     .home-slider .invite-hero { position: relative; padding-top: var(--invite-header-clearance); background: #10162a; }
     .home-slider .invite-hero--pomegranate-acrylic { background: #f0d8b2; }
+    .home-slider .invite-hero--teal { background: #043a48; }
     .invite-hero picture, .invite-hero picture img { display: block; width: 100%; height: 100%; }
     .invite-hero picture img { object-fit: contain; object-position: center; }
     .home .invite-hero .content { top: var(--invite-header-clearance); height: calc(100% - var(--invite-header-clearance)); background: none; justify-content: flex-start; padding: 18px 5%; }
@@ -138,6 +139,7 @@
       .home .invite-hero .content p { margin-bottom: 12px; }
       .invite-hero-actions { justify-content: center; }
       .invite-hero picture { height: auto; }
+      .home-slider .invite-hero--teal { justify-content: center; padding-top: 84px; }
       .invite-hero picture img { height: auto; }
     }
     .footer .wedding-locations { max-width: 1120px; margin: 0 auto; padding: 24px 5% 30px; text-align: center; }
@@ -252,6 +254,12 @@
               <a class="btn" href="#lead-form-section">Get a Quote</a>
             </div>
           </div></div>
+        </div>
+        <div class="swiper-slide home-item invite-hero invite-hero--teal">
+          <picture>
+            <source media="(max-width: 899px)" srcset="assets/images/invite-heroes/teal-invitation-mobile-480.webp 480w, assets/images/invite-heroes/teal-invitation-mobile-768.webp 768w" sizes="100vw" width="480" height="295">
+            <img src="assets/images/invite-heroes/teal-invitation-desktop-1280.webp" srcset="assets/images/invite-heroes/teal-invitation-desktop-1280.webp 1280w, assets/images/invite-heroes/teal-invitation-desktop-1920.webp 1920w" sizes="100vw" width="1280" height="493" loading="lazy" decoding="async" fetchpriority="low" alt="Illustrated teal wedding invitation set on pink silk with flowers">
+          </picture>
         </div>
       </div>
       <div class="swiper-pagination swiper-pagination1"></div>
